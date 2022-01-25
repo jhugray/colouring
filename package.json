@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/jhugray/colouring/issues"
   },
-  "homepage": "https://github.com/jhugray/colouring#readme"
+  "homepage": "https://github.com/jhugray/colouring#readme",
+  "dependencies": {
+    "concurrently": "^7.0.0"
+  }
 }
