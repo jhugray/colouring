@@ -20,6 +20,7 @@ function DrawingBoard() {
     let newFillColours = fillColours.slice(0);
     newFillColours[i] = currentColour;
     setFillColours(newFillColours);
+    console.log(currentColour)
 
 }
 return(
