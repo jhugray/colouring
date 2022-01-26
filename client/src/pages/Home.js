@@ -13,9 +13,9 @@ const Home = () => {
         <Link to="/">
           Home
         </Link>
-        <Button colorScheme="teal" size="md">
+        <Link to="/signup">
           Signup
-        </Button>
+        </Link>
         <Button colorScheme="teal" size="md">
           Login
         </Button>
