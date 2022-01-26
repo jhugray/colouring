@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 
 // Import other images here
 import Palette from "../components/Palette";
-// import StarTrio from "../components/StarTrio";
+import StarTrio from "../components/StarTrio";
 import HelloWorld from "../components/HelloWorld";
+import House from "../components/House";
+import Child from "../components/Child";
 // import { GithubPicker } from "react-color";
 
 function DrawingBoard() {
@@ -12,7 +15,7 @@ function DrawingBoard() {
 
   // Path's get color filled
   const [fillColours, setFillColours] = useState(Array(10).fill("white"));
-  
+
   // Current colour, How to set new colour
   const [currentColour, setCurrentColour] = useState("blue");
 
@@ -21,12 +24,11 @@ function DrawingBoard() {
     let newFillColours = fillColours.slice(0);
     newFillColours[i] = currentColour;
     setFillColours(newFillColours);
-    console.log(currentColour)
-
-}
-return(
+    console.log(currentColour + fillColours);
+  };
+  return (
     <div>
-        <header>
+      <header>
         <h1>
           {/* style color can not have a u */}
           <p style={{ color: currentColour }}>Colour</p>
@@ -34,10 +36,32 @@ return(
           <p style={{ color: currentColour }}>Blend</p>
         </h1>
       </header>
-    {/* <StarTrio fillColours={fillColours} onFill={onFillColour} /> */}
-    <HelloWorld fillColours={fillColours} onFill={onFillColour}/>
-    <Palette currentColour={currentColour} changeColour={setCurrentColour}  />
-    {/* We may want to switch to react-color
+      <Tabs isLazy isFitted size="lg" variant='enclosed'>
+        <TabList>
+          <Tab>Child</Tab>
+          <Tab>HelloWorld</Tab>
+          <Tab>House</Tab>
+          <Tab>StarTrio</Tab>
+        </TabList>
+
+        <TabPanels>
+          <TabPanel>
+            <Child fillColours={fillColours} onFill={onFillColour} />
+          </TabPanel>
+          <TabPanel >
+            <HelloWorld fillColours={fillColours} onFill={onFillColour} />
+          </TabPanel>
+          <TabPanel >
+            <House fillColours={fillColours} onFill={onFillColour} />
+          </TabPanel>
+          <TabPanel >
+            <StarTrio fillColours={fillColours} onFill={onFillColour} />
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+      <Palette currentColour={currentColour} changeColour={setCurrentColour} />
+
+      {/* We may want to switch to react-color
         <GithubPicker
           color={currentColour}
           onChangeComplete={(colour) => {
@@ -49,8 +73,7 @@ return(
           // onSwatchHover />
          */}
     </div>
-    
-)
+  );
 }
 
 export default DrawingBoard;

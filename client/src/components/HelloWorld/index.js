@@ -1,5 +1,5 @@
 import React from "react";
-// <?xml version="1.0" encoding="UTF-8" standalone="no"?> <!-- Created with Vectornator for iOS (http://vectornator.io/) --><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
 class HelloWorld extends React.Component {
   render() {
     return (
@@ -8,27 +8,10 @@ class HelloWorld extends React.Component {
         space="preserve"
         xlink="http://www.w3.org/1999/xlink"
         xmlns="http://www.w3.org/2000/svg"
-        height="100%"
+        height="500px"
         viewBox="0 0 3370.82 2384.24"
-        width="100%"
+        width="500px"
       >
-        {/* <metadata>
-<vectornator:setting value="false" key="WDSnapToEdges"/>
-<vectornator:setting value="true" key="VNDimensionsVisible"/>
-<vectornator:setting key="WDSnapToGrid" value="false"/>
-<vectornator:setting key="WDCMYKEnabledKey" value="false"/>
-<vectornator:setting value="true" key="WDGuidesVisible"/>
-<vectornator:setting value="false" key="IsTimeLapseWatermarkDisabled"/>
-<vectornator:setting value="true" key="VNSnapToGuides"/>
-<vectornator:setting value="false" key="WDDynamicGuides"/>
-<vectornator:setting value="Millimeters" key="WDUnits"/>
-<vectornator:setting key="WDIsolateActiveLayer" value="false"/>
-<vectornator:setting value="false" key="WDSnapToPoints"/>
-<vectornator:setting key="WDOutlineMode" value="false"/>
-<vectornator:setting value="true" key="UndoHistoryDisabled"/>
-<vectornator:setting key="WDRulersVisible" value="true"/>
-<vectornator:setting key="WDDisplayWhiteBackground" value="false"/>
-</metadata> */}
         <defs />
         <g id="Layer 1">
           <g opacity="0.913149">

@@ -5,6 +5,7 @@ import {ChakraProvider} from '@chakra-ui/react';
 
 import Home from "./pages/Home";
 import DrawingBoard from "./pages/DrawingBoard";
+import NoMatch from './pages/NoMatch';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           */}
           <Route exact path="/" component={Home} />
           <Route exact path="/drawingBoard" component={DrawingBoard} />
+          <Route component={NoMatch}/>
         </Switch>
       </Router>
       {/* </ApolloProvider> */}
