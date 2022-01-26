@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const colouringsSchema = require('./Colourings');
+const colouringSchema = require('./Colouring');
 
 const userSchema = new Schema({
   username: {
@@ -25,7 +25,7 @@ const userSchema = new Schema({
     required: true,
     trim: true
   },
-  savedColourings: [colouringsSchema],
+  savedColourings: [colouringSchema],
 });
 
 // set up pre-save middleware to create password
