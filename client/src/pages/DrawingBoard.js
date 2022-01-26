@@ -24,7 +24,7 @@ function DrawingBoard() {
     let newFillColours = fillColours.slice(0);
     newFillColours[i] = currentColour;
     setFillColours(newFillColours);
-    console.log(currentColour + fillColours);
+    console.log(fillColours);
   };
   return (
     <div>
@@ -46,7 +46,7 @@ function DrawingBoard() {
 
         <TabPanels>
           <TabPanel>
-            <Child fillColours={fillColours} onFill={onFillColour} />
+            <Child fillColours={fillColours} onFill={onFillColour} current={currentColour}/>
           </TabPanel>
           <TabPanel >
             <HelloWorld fillColours={fillColours} onFill={onFillColour} />
