@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 // Import other images here
 import Palette from "../components/Palette";
-import StarTrio from "../components/StarTrio";
+// import StarTrio from "../components/StarTrio";
+import HelloWorld from "../components/HelloWorld";
 // import { GithubPicker } from "react-color";
 
 function DrawingBoard() {
@@ -33,7 +34,8 @@ return(
           <p style={{ color: currentColour }}>Blend</p>
         </h1>
       </header>
-    <StarTrio fillColours={fillColours} onFill={onFillColour} />
+    {/* <StarTrio fillColours={fillColours} onFill={onFillColour} /> */}
+    <HelloWorld fillColours={fillColours} onFill={onFillColour}/>
     <Palette currentColour={currentColour} changeColour={setCurrentColour}  />
     {/* We may want to switch to react-color
         <GithubPicker
