@@ -9,6 +9,7 @@ const Signup = () => {
     username: '',
     email: '',
     password: '',
+    favColour: ''
   });
   const [addUser, { error }] = useMutation(ADD_USER);
 
@@ -69,6 +70,15 @@ const Signup = () => {
                 type="password"
                 id="password"
                 value={formState.password}
+                onChange={handleChange}
+              />
+                <input
+                className="form-input"
+                placeholder="Your favourite colour"
+                name="favColour"
+                type="favColour"
+                id="favColour"
+                value={formState.favColour}
                 onChange={handleChange}
               />
               <button className="btn d-block w-100" type="submit">

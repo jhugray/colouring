@@ -27,7 +27,7 @@ type Query {
 type Mutation {
   login(email: String!, password: String!): Auth
   addUser(username: String!, email: String!, password: String!, favColour: String!): Auth
-  savedColouring(name: String!): User
+  saveColouring(name: String!): User
   removeColouring(_id: ID!): User
 }
 

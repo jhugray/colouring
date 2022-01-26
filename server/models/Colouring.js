@@ -1,4 +1,4 @@
-const Schema = require('mongoose');
+const { Schema } = require('mongoose');
 
 const colouringSchema = new Schema({
   name: {
@@ -6,4 +6,4 @@ const colouringSchema = new Schema({
   }
 });
 
-module.exports = colouringSchema
+module.exports = colouringSchema;
