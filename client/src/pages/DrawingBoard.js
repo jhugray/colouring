@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Heading, Text, Button } from "@chakra-ui/react";
 
 // Import other images here
 import Palette from "../components/Palette";
@@ -28,33 +28,41 @@ function DrawingBoard() {
   };
   return (
     <div>
-      <header>
-        <h1>
-          {/* style color can not have a u */}
-          <p style={{ color: currentColour }}>Colour</p>
-          <p style={{ color: currentColour }}>Harmony</p>
-          <p style={{ color: currentColour }}>Blend</p>
-        </h1>
-      </header>
-      <Tabs isLazy isFitted size="lg" variant='enclosed'>
+      <Box>
+        <Heading mb={2}>Drawing Board</Heading>
+        <Button size="lg" colorScheme="green" mt="24px">
+          Save Your Work?
+        </Button>
+      </Box>
+      <Tabs
+        colorScheme={currentColour}
+        isLazy
+        isFitted
+        size="lg"
+        variant="unstyled"
+      >
         <TabList>
-          <Tab>Child</Tab>
-          <Tab>HelloWorld</Tab>
-          <Tab>House</Tab>
-          <Tab>StarTrio</Tab>
+          <Tab _selected={{ bg: currentColour }}>Child</Tab>
+          <Tab _selected={{ bg: currentColour }}>HelloWorld</Tab>
+          <Tab _selected={{ bg: currentColour }}>House</Tab>
+          <Tab _selected={{ bg: currentColour }}>StarTrio</Tab>
         </TabList>
 
         <TabPanels>
           <TabPanel>
-            <Child fillColours={fillColours} onFill={onFillColour} current={currentColour}/>
+            <Child
+              fillColours={fillColours}
+              onFill={onFillColour}
+              current={currentColour}
+            />
           </TabPanel>
-          <TabPanel >
+          <TabPanel>
             <HelloWorld fillColours={fillColours} onFill={onFillColour} />
           </TabPanel>
-          <TabPanel >
+          <TabPanel>
             <House fillColours={fillColours} onFill={onFillColour} />
           </TabPanel>
-          <TabPanel >
+          <TabPanel>
             <StarTrio fillColours={fillColours} onFill={onFillColour} />
           </TabPanel>
         </TabPanels>
