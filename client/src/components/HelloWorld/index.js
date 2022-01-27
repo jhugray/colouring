@@ -8,9 +8,9 @@ class HelloWorld extends React.Component {
         space="preserve"
         xlink="http://www.w3.org/1999/xlink"
         xmlns="http://www.w3.org/2000/svg"
-        height="500px"
+        height="400px"
         viewBox="0 0 3370.82 2384.24"
-        width="500px"
+        width="400px"
       >
         <defs />
         <g id="Layer 1">

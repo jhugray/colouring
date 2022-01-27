@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Heading, Button, Container, Flex } from "@chakra-ui/react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Heading, Button, Container, Flex, Spacer} from "@chakra-ui/react";
 
 // Import other images here
 import Palette from "../components/Palette";
@@ -28,12 +28,13 @@ function DrawingBoard() {
   };
   return (
     <Container maxW='container.sm' bg={currentColour} centerContent>
-      <Box maxW="md" bg="white" borderWidth="1px" flexWrap alignItems>
-        <Heading mb={2}>Drawing Board</Heading>
-        <Button size="md" colorScheme="green" mt="24px">
+      <Flex w="100%" bg="white" p={4}>
+        <Heading>Drawing Board</Heading>
+        <Spacer />
+        <Button  colorScheme="green">
           Save Your Work
         </Button>
-      </Box>
+      </Flex>
       <Box bg="white">
       <Tabs
         isLazy
