@@ -9,6 +9,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import DrawingBoard from "./pages/DrawingBoard";
+import NoMatch from './pages/NoMatch';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -40,6 +41,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} /> 
           <Route exact path="/drawingBoard" component={DrawingBoard} />
+          <Route component={NoMatch}/>
         </Switch>
       </Router>
       </ApolloProvider>
