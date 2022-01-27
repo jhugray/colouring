@@ -7,6 +7,9 @@ import StarTrio from "../components/StarTrio";
 import HelloWorld from "../components/HelloWorld";
 import House from "../components/House";
 import Child from "../components/Child";
+import { useMutation} from '@apollo/client';
+import {SAVE_COLOURS} from '../utils/mutations';
+import Auth from '../utils/auth';
 // import { GithubPicker } from "react-color";
 
 function DrawingBoard() {
@@ -19,19 +22,43 @@ function DrawingBoard() {
   // Current colour, How to set new colour
   const [currentColour, setCurrentColour] = useState("white");
 
+  const [saveColours] = useMutation(SAVE_COLOURS);
   // How to change Colour
   const onFillColour = (i) => {
     let newFillColours = fillColours.slice(0);
     newFillColours[i] = currentColour;
     setFillColours(newFillColours);
-    console.log(fillColours);
+    console.log(newFillColours);
   };
+
+  const handleSaveColourBook = async (newFillColours) => {
+
+    // get token
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+    // does token work?, yep
+    console.log("Token works:  " + token)
+  
+
+    try {
+      const response = await saveColours({newFillColours});
+      // this works too
+      console.log(response);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <Container maxW='container.sm' bg={currentColour} centerContent>
       <Flex w="100%" bg="white" p={4}>
         <Heading>Drawing Board</Heading>
         <Spacer />
-        <Button  colorScheme="green">
+        <Button  colorScheme="green"
+        onClick={() => handleSaveColourBook(fillColours)}>
           Save Your Work
         </Button>
       </Flex>

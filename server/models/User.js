@@ -1,6 +1,20 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const colouringSchema = require('./Colouring');
+
+// colouringSchema?
+// const colouringSchema = new Schema({
+
+//   reactionId: {
+//     type: Schema.Types.ObjectId,
+//     default: () => new Types.ObjectId()
+//   },
+//   colour: {
+//     type: String,
+//     required: true,
+//     default:"white"
+//   }
+// }
+// );
 
 const userSchema = new Schema({
   username: {
@@ -25,9 +39,11 @@ const userSchema = new Schema({
     required: true,
     trim: true
   },
-  savedColours: {
-    type: [String]
-  }
+  savedColours: []
+
+  // savedColours: {
+  //   type: [colouringSchema]
+  // }
 });
 
 // set up pre-save middleware to create password

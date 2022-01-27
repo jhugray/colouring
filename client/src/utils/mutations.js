@@ -27,12 +27,10 @@ export const ADD_USER = gql`
 `;
 
 export const SAVE_COLOURS = gql`
-mutation saveColours($colours: [String]) {
-  saveColouring(colours: $colours) {
-    _id
+mutation saveColours($savedColours: [String]) {
+  saveColours(savedColours: $savedColours) {
     username
     email
-    favColour
     savedColours
   }
 }
