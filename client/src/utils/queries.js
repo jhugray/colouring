@@ -7,9 +7,7 @@ export const GET_ME = gql`
       username
       email
       favColour
-      savedColourings {
-       name
-      }
+      savedColours
     }
 }
 `;
