@@ -14,7 +14,7 @@ function DrawingBoard() {
   // const [currentColour, setColour] = useState("#B80000");
 
   // Path's get color filled
-  const [fillColours, setFillColours] = useState(Array(10).fill("white"));
+  const [fillColours, setFillColours] = useState(Array(28).fill("white"));
 
   // Current colour, How to set new colour
   const [currentColour, setCurrentColour] = useState("white");
