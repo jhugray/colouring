@@ -17,7 +17,7 @@ function DrawingBoard() {
   const [fillColours, setFillColours] = useState(Array(10).fill("white"));
 
   // Current colour, How to set new colour
-  const [currentColour, setCurrentColour] = useState("blue");
+  const [currentColour, setCurrentColour] = useState("white");
 
   // How to change Colour
   const onFillColour = (i) => {
