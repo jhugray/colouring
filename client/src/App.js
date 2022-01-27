@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import DrawingBoard from "./pages/DrawingBoard";
 import NoMatch from './pages/NoMatch';
+import Navbar  from './components/Navbar'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -36,6 +37,7 @@ function App() {
       <ChakraProvider>
       <ApolloProvider client={client}>
       <Router>
+        <Navbar />
         <Switch>         
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />

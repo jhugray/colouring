@@ -1,49 +1,14 @@
 import React from "react";
-import { Box, Stack } from "@chakra-ui/react";
-// import { Button } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
-import Auth from '../utils/auth';
+import {Center, Container } from "@chakra-ui/react";
 
 const Home = () => {
-  const logout = event => {
-    event.preventDefault();
-    Auth.logout();
-  };
   
   return (
-    <div className="container">
-      <h1>Welcome to PAINTOLOUR</h1>
-      <Box bg="tomato" w="100%" p={4} color="white">
-        This is the Box
-      </Box>
-      <Stack spacing={8} direction="row" align="center">
-        <Link to="/">
-          Home
-        </Link>
-        <Link to="/DrawingBoard">
-          DrawingBoard
-        </Link>
-        {Auth.loggedIn() ? (
-          <>
-            <Link to="/mycolourings">
-              My Colourings
-            </Link>
-            <a href="/" onClick={logout}>
-              Logout
-            </a>
-          </>
-        ) : (
-          <>
-            <Link to="/signup">
-              Signup
-            </Link>
-            <Link to="/login">
-              Login
-            </Link>
-          </>
-        )}
-      </Stack>
-    </div>
+    <Container bg="grey" centerContent="true">
+<Center bg='red' w='50%' p={4} color='white'>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</Center>
+    </Container>
   );
 };
 

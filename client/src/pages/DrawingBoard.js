@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Heading, Button, Container, Flex } from "@chakra-ui/react";
 
 // Import other images here
 import Palette from "../components/Palette";
@@ -27,16 +27,19 @@ function DrawingBoard() {
     console.log(fillColours);
   };
   return (
-    <div>
-      <header>
-        <h1>
-          {/* style color can not have a u */}
-          <p style={{ color: currentColour }}>Colour</p>
-          <p style={{ color: currentColour }}>Harmony</p>
-          <p style={{ color: currentColour }}>Blend</p>
-        </h1>
-      </header>
-      <Tabs isLazy isFitted size="lg" variant='enclosed'>
+    <Container maxW='container.sm' bg={currentColour} centerContent>
+      <Box maxW="md" bg="white" borderWidth="1px" flexWrap alignItems>
+        <Heading mb={2}>Drawing Board</Heading>
+        <Button size="md" colorScheme="green" mt="24px">
+          Save Your Work
+        </Button>
+      </Box>
+      <Box bg="white">
+      <Tabs
+        isLazy
+        isFitted
+        size="lg"
+        variant="soft-rounded">
         <TabList>
           <Tab>Child</Tab>
           <Tab>HelloWorld</Tab>
@@ -46,19 +49,24 @@ function DrawingBoard() {
 
         <TabPanels>
           <TabPanel>
-            <Child fillColours={fillColours} onFill={onFillColour} current={currentColour}/>
+            <Child
+              fillColours={fillColours}
+              onFill={onFillColour}
+              current={currentColour}
+            />
           </TabPanel>
-          <TabPanel >
+          <TabPanel>
             <HelloWorld fillColours={fillColours} onFill={onFillColour} />
           </TabPanel>
-          <TabPanel >
+          <TabPanel>
             <House fillColours={fillColours} onFill={onFillColour} />
           </TabPanel>
-          <TabPanel >
+          <TabPanel>
             <StarTrio fillColours={fillColours} onFill={onFillColour} />
           </TabPanel>
         </TabPanels>
       </Tabs>
+      </Box>
       <Palette currentColour={currentColour} changeColour={setCurrentColour} />
 
       {/* We may want to switch to react-color
@@ -72,7 +80,7 @@ function DrawingBoard() {
           triangle="hide"
           // onSwatchHover />
          */}
-    </div>
+    </Container>
   );
 }
 
