@@ -1,8 +1,15 @@
 import React from "react";
 import { Box, Stack } from "@chakra-ui/react";
-import { Button } from "@chakra-ui/react";
+// import { Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import Auth from '../utils/auth';
+
 const Home = () => {
+  const logout = event => {
+    event.preventDefault();
+    Auth.logout();
+  };
+  
   return (
     <div className="container">
       <h1>Welcome to PAINTOLOUR</h1>
@@ -13,15 +20,28 @@ const Home = () => {
         <Link to="/">
           Home
         </Link>
-        <Button colorScheme="teal" size="md">
-          Signup
-        </Button>
-        <Button colorScheme="teal" size="md">
-          Login
-        </Button>
         <Link to="/DrawingBoard">
           DrawingBoard
         </Link>
+        {Auth.loggedIn() ? (
+          <>
+            <Link to="/mycolourings">
+              My Colourings
+            </Link>
+            <a href="/" onClick={logout}>
+              Logout
+            </a>
+          </>
+        ) : (
+          <>
+            <Link to="/signup">
+              Signup
+            </Link>
+            <Link to="/login">
+              Login
+            </Link>
+          </>
+        )}
       </Stack>
     </div>
   );
