@@ -7,12 +7,7 @@ type User {
   email: String
   password: String
   favColour: String
-  savedColourings: [Colouring]
-}
-
-type Colouring {
-  _id: ID
-  name: String
+  savedColours: [String]
 }
 
 type Auth {
@@ -27,8 +22,7 @@ type Query {
 type Mutation {
   login(email: String!, password: String!): Auth
   addUser(username: String!, email: String!, password: String!, favColour: String!): Auth
-  saveColouring(name: String!): User
-  removeColouring(_id: ID!): User
+  saveColours(savedColours: [String]): User
 }
 
 `;

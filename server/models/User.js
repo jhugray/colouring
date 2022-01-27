@@ -25,7 +25,9 @@ const userSchema = new Schema({
     required: true,
     trim: true
   },
-  savedColourings: [colouringSchema],
+  savedColours: {
+    type: [String]
+  }
 });
 
 // set up pre-save middleware to create password

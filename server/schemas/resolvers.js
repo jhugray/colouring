@@ -33,29 +33,19 @@ const resolvers = {
 
       return { token, user };
   },
-  saveColouring: async (parent, { colouring }, context) => {
-    console.log(colouring)
+  saveColours: async (parent, { colours }, context) => {
+    console.log(colours)
     console.log(context)
     if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
             { _id: context.user._id },
-            { $addToSet: { savedColourings: colouring } },
+            { $addToSet: { savedColours: colours } },
             { new: true }
         )
         return updatedUser;
     }
     throw new AuthenticationError('You need to be logged in!')
-  },
-  removeColouring: async (parent, { _id }, context) => {
-      if (context.user) {
-          const updatedUser = await User.findOneAndUpdate(
-              {_id: context.user._id},
-              { $pull: { savedColourings: { _id: id } } },
-              { new: true }
-          )
-          return updatedUser;
-      }
-    }
+  }
   }
 
 }

@@ -26,30 +26,14 @@ export const ADD_USER = gql`
   }
 `;
 
-export const SAVE_COLOURING = gql`
-mutation saveColouring($name: String!) {
-  saveColouring(name: $name) {
+export const SAVE_COLOURS = gql`
+mutation saveColours($colours: [String]) {
+  saveColouring(colours: $colours) {
     _id
     username
     email
     favColour
-    savedColourings {
-      name
-    }
+    savedColours
   }
 }
-`;
-
-export const REMOVE_COLOURING = gql`
-  mutation removeColouring($_id: ID) {
-    removeColouring(_id: $id) {
-      _id
-      username
-      email
-      favColour
-      savedColourings {
-        name
-      }
-    }
-  }
 `;
