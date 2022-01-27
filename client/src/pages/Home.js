@@ -1,8 +1,6 @@
 import React from "react";
 import {Center, Container } from "@chakra-ui/react";
 
-import Auth from '../utils/auth';
-
 const Home = () => {
   
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Heading, Text, Button } from "@chakra-ui/react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Heading, Button, Container, Flex } from "@chakra-ui/react";
 
 // Import other images here
 import Palette from "../components/Palette";
@@ -27,25 +27,24 @@ function DrawingBoard() {
     console.log(fillColours);
   };
   return (
-    <div>
-      <Box>
+    <Container maxW='container.sm' bg={currentColour} centerContent>
+      <Box maxW="md" bg="white" borderWidth="1px" flexWrap alignItems>
         <Heading mb={2}>Drawing Board</Heading>
-        <Button size="lg" colorScheme="green" mt="24px">
-          Save Your Work?
+        <Button size="md" colorScheme="green" mt="24px">
+          Save Your Work
         </Button>
       </Box>
+      <Box bg="white">
       <Tabs
-        colorScheme={currentColour}
         isLazy
         isFitted
         size="lg"
-        variant="unstyled"
-      >
+        variant="soft-rounded">
         <TabList>
-          <Tab _selected={{ bg: currentColour }}>Child</Tab>
-          <Tab _selected={{ bg: currentColour }}>HelloWorld</Tab>
-          <Tab _selected={{ bg: currentColour }}>House</Tab>
-          <Tab _selected={{ bg: currentColour }}>StarTrio</Tab>
+          <Tab>Child</Tab>
+          <Tab>HelloWorld</Tab>
+          <Tab>House</Tab>
+          <Tab>StarTrio</Tab>
         </TabList>
 
         <TabPanels>
@@ -67,6 +66,7 @@ function DrawingBoard() {
           </TabPanel>
         </TabPanels>
       </Tabs>
+      </Box>
       <Palette currentColour={currentColour} changeColour={setCurrentColour} />
 
       {/* We may want to switch to react-color
@@ -80,7 +80,7 @@ function DrawingBoard() {
           triangle="hide"
           // onSwatchHover />
          */}
-    </div>
+    </Container>
   );
 }
 
