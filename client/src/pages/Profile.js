@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import {GET_ME } from '../utils/queries';
-import { UPDATE_USER } from '../utils/mutations';
+// import { UPDATE_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { Container, Stack, Avatar, AvatarBadge } from '@chakra-ui/react'
 
