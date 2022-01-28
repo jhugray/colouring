@@ -8,10 +8,10 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
-          .populate('savedColours')
+         
         return userData;
       }
-      throw new AuthenticationError('Not logged in');
+      throw new AuthenticationError('Likely a context error');
     }
   },
   Mutation: {
@@ -34,13 +34,11 @@ const resolvers = {
       return { token, user };
   },
 
-    savedColours: async (parent, { colours }, context) => {
-    console.log(colours)
-    console.log(context)
+    savedColours: async (parent, { savedColours }, context) => {
     if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
             { _id: context.user._id },
-            { $addToSet: { savedColours: colours } },
+            { "savedColours": savedColours },
             { new: true }
         )
         return updatedUser;
@@ -58,6 +56,5 @@ const resolvers = {
   }
   }
 
-}
 
 module.exports = resolvers;

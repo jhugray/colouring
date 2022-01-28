@@ -22,9 +22,9 @@ function DrawingBoard() {
 
 
   const { data } = useQuery(GET_ME);
-  console.log(GET_ME)
+console.log(data)
   const userData = data?.me || {};
-  console.log(userData)
+console.log(userData)
   const [fillColours, setFillColours] = useState(userData?.savedColours || Array(29).fill("white"));
   // Current colour, How to set new colour
 //   const [currentColour, setCurrentColour] = useState("white");
@@ -38,25 +38,24 @@ function DrawingBoard() {
     console.log(newFillColours);
   };
 
-  const handleSaveColourBook = async () => {
+  const handleSaveColourBook = async (i) => {
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
+    const newFillColours = fillColours.slice(0);
+    newFillColours[i] = currentColour;
+    setFillColours(newFillColours);
 
     if (!token) {
       return false;
     }
-    // does token work?, yep
     console.log("Token works:  " + token)
   
 
     try {
       const response = await saveColours({
-          variables: {
-        savedColours:fillColours},
+    variables: {savedColours:fillColours},
       });
-      // this works too
-      console.log(response);
     } catch (err) {
       console.error(err);
     }
