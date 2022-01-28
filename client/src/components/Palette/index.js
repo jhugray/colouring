@@ -2,8 +2,8 @@ import React from 'react';
 
 const Palette = ({currentColour, changeColour}) => {
 
-    // const colours = ['white', 'red', 'blue', 'yellow', 'green']
-    const colours = ['red', 'blue', 'yellow', 'green', 'white', 'orange', 'pink', 'cyan', 'brown', 'gold' , 'grey', 'black', 'navy']
+    const colours = ['white', 'red', 'blue', 'yellow', 'green']
+    // const colours = ['red', 'blue', 'yellow', 'green', 'white', 'orange', 'pink', 'cyan', 'brown', 'gold' , 'grey', 'black', 'navy']
     return(
         <div className="palette">
             {colours.map(colour => { 

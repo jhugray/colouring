@@ -8,6 +8,7 @@ export const LOGIN_USER = gql`
         _id
         username
         favColour
+        savedColours
       }
     }
   }
@@ -21,17 +22,22 @@ export const ADD_USER = gql`
         _id
         username
         favColour
+        savedColours
       }
     }
   }
 `;
 
 export const SAVE_COLOURS = gql`
-mutation saveColours($savedColours: [String]) {
-  saveColours(savedColours: $savedColours) {
+mutation savedColours($savedColours: [String]) {
+  savedColours(savedColours: $savedColours) {
+    _id
     username
     email
+    favColour
     savedColours
   }
 }
 `;
+
+// Going to need a query_colours to load older colourings state

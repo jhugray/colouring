@@ -8,7 +8,7 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
-          .populate('savedColourings')
+          .populate('savedColours')
         return userData;
       }
       throw new AuthenticationError('Not logged in');
@@ -33,7 +33,7 @@ const resolvers = {
 
       return { token, user };
   },
-  saveColours: async (parent, { colours }, context) => {
+  savedColours: async (parent, { colours }, context) => {
     console.log(colours)
     console.log(context)
     if (context.user) {
