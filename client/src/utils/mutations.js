@@ -8,6 +8,7 @@ export const LOGIN_USER = gql`
         _id
         username
         favColour
+        savedColours
       }
     }
   }
@@ -21,10 +22,22 @@ export const ADD_USER = gql`
         _id
         username
         favColour
+        savedColours
       }
     }
   }
 `;
+
+export const UPDATE_USER = gql`
+  mutation updateUser($favColour: String, $image: String) {
+    updateUser(favColour: $favColour, image: $image) {
+      user {
+        favColour
+        image
+      }
+    }
+  }
+`
 
 export const SAVE_COLOURS = gql`
 mutation saveColours($colours: [String]) {

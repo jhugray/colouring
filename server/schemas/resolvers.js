@@ -33,18 +33,25 @@ const resolvers = {
 
       return { token, user };
   },
-  saveColours: async (parent, { colours }, context) => {
-    console.log(colours)
-    console.log(context)
-    if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-            { _id: context.user._id },
-            { $addToSet: { savedColours: colours } },
-            { new: true }
-        )
-        return updatedUser;
-    }
-    throw new AuthenticationError('You need to be logged in!')
+    updateUser: async (parent, { favColour, image }) => {
+      const user = await User.findOneAndUpdate(args);
+      user.favColour = favColour;
+      user.image = image;
+
+      return user;
+    },
+    saveColours: async (parent, { colours }, context) => {
+      console.log(colours)
+      console.log(context)
+      if (context.user) {
+          const updatedUser = await User.findOneAndUpdate(
+              { _id: context.user._id },
+              { $addToSet: { savedColours: colours } },
+              { new: true }
+          )
+          return updatedUser;
+      }
+      throw new AuthenticationError('You need to be logged in!')
   }
   }
 

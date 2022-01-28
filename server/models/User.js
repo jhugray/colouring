@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const colouringSchema = require('./Colouring');
 
 const userSchema = new Schema({
   username: {
@@ -27,6 +26,9 @@ const userSchema = new Schema({
   },
   savedColours: {
     type: [String]
+  },
+  image: {
+    type: String
   }
 });
 
