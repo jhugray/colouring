@@ -22,9 +22,9 @@ function DrawingBoard() {
 
 
   const { data } = useQuery(GET_ME);
-
+console.log(data)
   const userData = data?.me || {};
-
+console.log(userData)
   const [fillColours, setFillColours] = useState(userData?.savedColours || Array(29).fill("white"));
   // Current colour, How to set new colour
 //   const [currentColour, setCurrentColour] = useState("white");

@@ -8,7 +8,7 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
-          .populate('savedColours')
+         
         return userData;
       }
       throw new AuthenticationError('Likely a context error');
@@ -38,8 +38,8 @@ const resolvers = {
     if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
             { _id: context.user._id },
-            { savedColours: savedColours },
-            // { new: true }
+            { "savedColours": savedColours },
+            { new: true }
         )
         return updatedUser;
     }
