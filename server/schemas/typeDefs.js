@@ -7,7 +7,7 @@ type User {
   email: String
   password: String
   favColour: String
-  savedColours: [String],
+  savedColours: [String]
   image: String
 }
 

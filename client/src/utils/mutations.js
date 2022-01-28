@@ -29,12 +29,14 @@ export const ADD_USER = gql`
 `;
 
 export const UPDATE_USER = gql`
-  mutation updateUser($favColour: String, $image: String) {
-    updateUser(favColour: $favColour, image: $image) {
-      user {
-        favColour
-        image
-      }
+  mutation updateUser($favColour: String!) {
+    updateUser(favColour: $favColour) {
+      _id
+      username
+      email
+      favColour
+      image
+      savedColours
     }
   }
 `

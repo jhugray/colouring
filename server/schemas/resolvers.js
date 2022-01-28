@@ -1,4 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
+const { connections } = require('mongoose');
 const { User } = require('../models');
 const { signToken } = require('../utils/auth');
 
@@ -45,13 +46,18 @@ const resolvers = {
     }
     throw new AuthenticationError('You need to be logged in!')
     },
-    updateUser: async (parent, { favColour, image }) => {
-      const user = await User.findOneAndUpdate(args);
-      user.favColour = favColour;
-      user.image = image;
+    updateUser: async (parent, { favColour, image }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { "favColour": favColour },
+          { new: true }
+          );
+        return updatedUser; 
+      }
 
-      return user;
-    }
+      throw new AuthenticationError('Not logged in');
+    },
     
   }
   }

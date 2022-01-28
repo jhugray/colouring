@@ -33,6 +33,7 @@ console.log(userData)
   // How to change Colour
   const onFillColour = (i) => {
     let newFillColours = fillColours.slice(0);
+    console.log(newFillColours)
     newFillColours[i] = currentColour;
     setFillColours(newFillColours);
     console.log(newFillColours);
