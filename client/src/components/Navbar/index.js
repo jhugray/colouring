@@ -61,7 +61,7 @@ const logout = event => {
             </a>
 
             <Stack direction="row">
-              <Avatar size='lg' name={userData.username}>
+              <Avatar size='lg' name={userData.username} src={userData.image}>
                   <AvatarBadge borderColor='papayawhip' bg={userData.favColour} boxSize='1.25em' />
                 </Avatar>
             </Stack>

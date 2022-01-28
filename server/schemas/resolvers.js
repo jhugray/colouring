@@ -48,9 +48,16 @@ const resolvers = {
     },
     updateUser: async (parent, { favColour, image }, context) => {
       if (context.user) {
+        const variables = {}
+        if (favColour !== ''){
+          variables.favColour = favColour
+        }
+        if (image !== undefined){
+          variables.image = image
+        }
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { "favColour": favColour },
+          variables,
           { new: true }
           );
         return updatedUser; 
