@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Heading, Button, Container, Flex, Spacer} from "@chakra-ui/react";
 
 // Import other images here
@@ -21,13 +21,19 @@ function DrawingBoard() {
   // Path's get color filled
 
 
-  const { data } = useQuery(GET_ME);
+  const { loading, data } = useQuery(GET_ME);
 console.log(data)
-  const userData = data?.me || {};
-console.log(userData)
-  const [fillColours, setFillColours] = useState(userData?.savedColours || Array(29).fill("white"));
-  // Current colour, How to set new colour
-//   const [currentColour, setCurrentColour] = useState("white");
+  const userData = data?.me || [];
+  const { savedColours} = userData
+console.log(userData.savedColours)
+
+const [fillColours, setFillColours] = useState(Array(29).fill("white"));
+console.log(fillColours)
+
+useEffect(() => {
+    setFillColours(savedColours ? savedColours: Array(29).fill("white"))
+  }, [savedColours])
+
 
   const [saveColours] = useMutation(SAVE_COLOURS);
   // How to change Colour
@@ -53,7 +59,7 @@ console.log(userData)
   
 
     try {
-      const response = await saveColours({
+    await saveColours({
     variables: {savedColours:fillColours},
       });
     } catch (err) {
@@ -61,6 +67,10 @@ console.log(userData)
     }
   };
 
+  
+  if (loading) {
+    return <h2>LOADING...</h2>;
+  }
   return (
     <Container maxW='container.sm' bg={currentColour} centerContent>
       <Flex w="100%" bg="white" p={4}>
