@@ -28,6 +28,17 @@ export const ADD_USER = gql`
   }
 `;
 
+export const UPDATE_USER = gql`
+  mutation updateUser($favColour: String, $image: String) {
+    updateUser(favColour: $favColour, image: $image) {
+      user {
+        favColour
+        image
+      }
+    }
+  }
+`
+
 export const SAVE_COLOURS = gql`
 mutation savedColours($savedColours: [String]) {
   savedColours(savedColours: $savedColours) {

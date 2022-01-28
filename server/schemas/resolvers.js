@@ -33,7 +33,8 @@ const resolvers = {
 
       return { token, user };
   },
-  savedColours: async (parent, { colours }, context) => {
+
+    savedColours: async (parent, { colours }, context) => {
     console.log(colours)
     console.log(context)
     if (context.user) {
@@ -45,6 +46,15 @@ const resolvers = {
         return updatedUser;
     }
     throw new AuthenticationError('You need to be logged in!')
+    },
+    updateUser: async (parent, { favColour, image }) => {
+      const user = await User.findOneAndUpdate(args);
+      user.favColour = favColour;
+      user.image = image;
+
+      return user;
+    }
+    
   }
   }
 
