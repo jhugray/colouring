@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
+import { Stack, Button, Input, InputGroup, InputLeftElement, Select } from '@chakra-ui/react'
 
 import Auth from '../utils/auth';
 
@@ -44,8 +45,11 @@ const Signup = () => {
         <div className="card">
           <h4 className="card-header">Sign Up</h4>
           <div className="card-body">
-            <form onSubmit={handleFormSubmit}>
-              <input
+          <form onSubmit={handleFormSubmit}>
+            <Stack spacing={4} m={10} >
+            <InputGroup>
+              <InputLeftElement />
+              <Input
                 className="form-input"
                 placeholder="Your username"
                 name="username"
@@ -54,7 +58,10 @@ const Signup = () => {
                 value={formState.username}
                 onChange={handleChange}
               />
-              <input
+             </InputGroup>
+             <InputGroup>
+              <InputLeftElement />
+              <Input
                 className="form-input"
                 placeholder="Your email"
                 name="email"
@@ -63,7 +70,10 @@ const Signup = () => {
                 value={formState.email}
                 onChange={handleChange}
               />
-              <input
+              </InputGroup>
+              <InputGroup>
+              <InputLeftElement />
+              <Input
                 className="form-input"
                 placeholder="******"
                 name="password"
@@ -72,21 +82,35 @@ const Signup = () => {
                 value={formState.password}
                 onChange={handleChange}
               />
-                <input
-                className="form-input"
-                placeholder="Your favourite colour"
+              </InputGroup>
+              {/* <InputGroup>
+              <InputLeftElement />
+                <Input
+                className="form-input"             
                 name="favColour"
                 type="favColour"
                 id="favColour"
                 value={formState.favColour}
                 onChange={handleChange}
               />
-              <button className="btn d-block w-100" type="submit">
+              </InputGroup> */}
+              <InputGroup>
+              <Select   name="favColour"
+                type="favColour"
+                id="favColour" value={formState.favColour} onChange={handleChange} placeholder='Select your favourite colour!'>
+                <option value="red" >Red</option>
+                <option value="blue">Blue</option>
+                <option value="yellow">Yellow</option>
+              </Select>
+              </InputGroup>
+              <InputGroup>
+              <Button type="submit">
                 Submit
-              </button>
-            </form>
-
+              </Button>
+            </InputGroup>
             {error && <div>Signup failed</div>}
+            </Stack>
+          </form>
           </div>
         </div>
       </div>

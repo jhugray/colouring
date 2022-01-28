@@ -1,7 +1,19 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-import { Flex, Spacer, Box, Heading, Stack } from '@chakra-ui/react'
+import { 
+  Flex, 
+  Spacer, 
+  Box, 
+  Heading, 
+  Stack, 
+  Avatar, 
+  AvatarBadge
+} from '@chakra-ui/react'
+import { Redirect, useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import {GET_ME } from '../../utils/queries';
+
 
 function Nav() {
 
@@ -10,10 +22,23 @@ const logout = event => {
     Auth.logout();
   };
 
+  const { username: userParam } = useParams();
+  const { loading, data } = useQuery(GET_ME);
+  const userData = data?.me || {};
+
+  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+    return <Redirect to="/profile" />;
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+
   return (
     <header className="flex-row px-1">
       <nav>
-        <Flex>
+        <Flex m={8}>
           <Box bg="tomato" p="10">
             <Heading size="md">Welcome to PAINTOLOUR</Heading>
           </Box>
@@ -27,13 +52,20 @@ const logout = event => {
         </Link>
         {Auth.loggedIn() ? (
           <>
-            <Link to="/mycolourings">
-              My Colourings
+            <Link to="/myprofile">
+              My Profile
             </Link>
             <a href="/" onClick={logout}>
               Logout
             </a>
+
+            <Stack direction="row">
+              <Avatar size='lg' name={userData.username}>
+                  <AvatarBadge borderColor='papayawhip' bg={userData.favColour} boxSize='1.25em' />
+                </Avatar>
+            </Stack>
           </>
+          
         ) : (
           <>
             <Link to="/signup">
