@@ -1,5 +1,7 @@
 import React from 'react';
 
+//This is now unused and can be removed!
+
 const Palette = ({currentColour, changeColour}) => {
 
     const colours = ['white', 'red', 'blue', 'yellow', 'green']

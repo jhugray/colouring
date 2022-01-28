@@ -4,14 +4,32 @@ class House extends React.Component {
   render() {
     return (
       <svg
-        width="400px"
+        width="380px"
         space="preserve"
         xlink="http://www.w3.org/1999/xlink"
-        height="400px"
+        height="380px"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 3370.82 2384.24"
+        viewBox="500 -200 2500 3000"
       >
         <g id="Layer 1">
+        <rect 
+         onClick={() => this.props.onFill(8) }
+         x="0" y="2200"
+         rx="20" ry="20"
+         width="5000" height="1000" 
+         fill={this.props.fillColours[8]} 
+         strokeWidth="3" 
+         stroke="#000000" />
+         <rect 
+         onClick={() => this.props.onFill(9) }
+         x="100" y="-1000"
+         rx="20" ry="20"
+         width="3200" height="3200" 
+         fill={this.props.fillColours[9]} 
+         strokeWidth="3" 
+         stroke="#000000" />
+        </g>
+        <g id="Layer 2">
           <path
           onClick={() => this.props.onFill(17)}
             strokeWidth="43.4883"

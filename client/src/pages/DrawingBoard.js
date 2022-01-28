@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Heading, Button, Container, Flex, Spacer} from "@chakra-ui/react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Heading, Button, Container, Flex, Spacer, Center} from "@chakra-ui/react";
 
 // Import other images here
 // import Palette from "../components/Palette";
@@ -41,7 +41,7 @@ useEffect(() => {
     let newFillColours = fillColours.slice(0);
     newFillColours[i] = currentColour;
     setFillColours(newFillColours);
-    console.log(newFillColours);
+    // console.log(newFillColours);
   };
 
   const handleSaveColourBook = async (i) => {
@@ -73,19 +73,24 @@ useEffect(() => {
   }
   return (
     <Container maxW='container.sm' bg={currentColour} centerContent>
-      <Flex w="100%" bg="white" p={4}>
+      <Flex w="412px" bg="white" p={1}>
         <Heading>Drawing Board</Heading>
         <Spacer />
+        {Auth.loggedIn() ? (
         <Button  colorScheme="green"
         onClick={() => handleSaveColourBook(fillColours)}>
           Save Your Work
         </Button>
+              ) : (
+            <Center color={currentColour} borderRadius='lg' alignContent>Make an account to save!</Center>
+              )}
       </Flex>
       <Box bg="white">
       <Tabs
         isLazy
         isFitted
         size="lg"
+        defaultIndex={2}
         variant="soft-rounded">
         <TabList>
           <Tab>Child</Tab>
@@ -119,7 +124,7 @@ useEffect(() => {
           onChangeComplete={(colour) => {
             setColour(colour.hex);
           }}
-          width="434px"
+          width="412px"
           colors={['#8D5524','#E0AC69','#C68642','#F1C27D', '#FFDBAC','#FFFFFF','#B80000', '#DB3E00', '#FCCB00', '#008B02', '#006B76', '#1273DE', '#004DCF', '#5300EB', '#EB9694', '#FAD0C3', "#3B2219", "#d2b179", "#795548", "#f3d6b9", "#FFECB3", "#000000", "#e91e63", "#bf360c", "#fcb900", '#8bc34a', '#4dd0e1', '#b3e5fc', '#2d3986', '#9c27b0', '#bf4340', '#f8bbd0']}
           triangle="hide" />
     </Container>
