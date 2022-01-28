@@ -40,8 +40,8 @@ export const UPDATE_USER = gql`
 `
 
 export const SAVE_COLOURS = gql`
-mutation saveColours($colours: [String]) {
-  saveColouring(colours: $colours) {
+mutation savedColours($savedColours: [String]) {
+  savedColours(savedColours: $savedColours) {
     _id
     username
     email
@@ -50,3 +50,5 @@ mutation saveColours($colours: [String]) {
   }
 }
 `;
+
+// Going to need a query_colours to load older colourings state

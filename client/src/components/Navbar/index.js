@@ -40,7 +40,8 @@ const logout = event => {
       <nav>
         <Flex m={8}>
           <Box bg="tomato" p="10">
-            <Heading size="md">Welcome to PAINTOLOUR</Heading>
+            <Heading size="md">| PAINT |</Heading>
+            
           </Box>
           <Spacer />
           <Stack spacing={8} direction="row" align="center">
