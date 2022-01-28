@@ -22,13 +22,13 @@ function DrawingBoard() {
 
 
   const { loading, data } = useQuery(GET_ME);
-console.log(data)
+// console.log(data)
   const userData = data?.me || [];
   const { savedColours} = userData
-console.log(userData.savedColours)
+// console.log(userData.savedColours)
 
 const [fillColours, setFillColours] = useState(Array(29).fill("white"));
-console.log(fillColours)
+// console.log(fillColours)
 
 useEffect(() => {
     setFillColours(savedColours ? savedColours: Array(29).fill("white"))
@@ -114,17 +114,14 @@ useEffect(() => {
       </Tabs>
       </Box>
       {/* <Palette currentColour={currentColour} changeColour={setCurrentColour} /> */}
-
-      {/* We may want to switch to react-color */}
         <GithubPicker
           color={currentColour}
           onChangeComplete={(colour) => {
             setColour(colour.hex);
           }}
-          width="250px"
-          colours={['#B80000', '#DB3E00', '#FCCB00', '#008B02', '#006B76', '#1273DE', '#004DCF', '#5300EB', '#EB9694', '#FAD0C3', '#FEF3BD', '#C1E1C5', '#BEDADC', '#C4DEF6', '#BED3F3', '#D4C4FB']}
+          width="434px"
+          colors={['#8D5524','#E0AC69','#C68642','#F1C27D', '#FFDBAC','#FFFFFF','#B80000', '#DB3E00', '#FCCB00', '#008B02', '#006B76', '#1273DE', '#004DCF', '#5300EB', '#EB9694', '#FAD0C3', "#3B2219", "#d2b179", "#795548", "#f3d6b9", "#FFECB3", "#000000", "#e91e63", "#bf360c", "#fcb900", '#8bc34a', '#4dd0e1', '#b3e5fc', '#2d3986', '#9c27b0', '#bf4340', '#f8bbd0']}
           triangle="hide" />
-        
     </Container>
   );
 }
