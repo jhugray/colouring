@@ -5,6 +5,9 @@ import { useQuery } from "@apollo/client";
 import { GET_ME } from "../../utils/queries";
 
 import {
+  Center,
+  Circle,
+  Avatar,
   chakra,
   Image,
   HStack,
@@ -42,6 +45,20 @@ function Nav() {
     event.preventDefault();
     Auth.logout();
   };
+
+  //this breaks the code rn 
+  // const { username: userParam } = useParams();
+  // const { loading, data } = useQuery(GET_ME);
+  // const userData = data?.me || {};
+
+  // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  //   return <Redirect to="/profile" />;
+  // }
+
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
+
 
   
   
@@ -325,42 +342,56 @@ function Nav() {
                 Colouring Page
               </Button>
               </form>
-              
-              <form method="get" action="/myprofile">
-                <Button
-                  type="submit"
-                  bg={bg}
-                  color="gray.500"
-                  display="inline-flex"
-                  alignItems="center"
-                  fontSize="md"
-                  _hover={{ color: cl }}
-                  _focus={{ boxShadow: "none" }}
-                >
-                  Profile Page
-                </Button>
-              </form>
-          
-            </HStack>
-            <HStack spacing="5" display={{ base: "none", md: "flex" }}>
-              <form method="get" action="/login">
-                <Button type="submit">
-                  Login
-                </Button>
-              </form>
-              <form method="get" action="/signup">
-                <Button type="submit">
-                  Sign up
-                </Button>
-              </form>
+              {/* {Auth.loggedIn() ? (
+                <> */}
+                  <form method="get" action="/myprofile">
+                    <Button
+                      type="submit"
+                      bg={bg}
+                      color="gray.500"
+                      display="inline-flex"
+                      alignItems="center"
+                      fontSize="md"
+                      _hover={{ color: cl }}
+                      _focus={{ boxShadow: "none" }}
+                    >
+                      Profile Page
+                    </Button>
+                  </form>
 
-              <form method="get" action="/" onClick={logout}>
-                <Button type="submit">
-                  Sign out
-                </Button>
-              </form>
-            </HStack>
+                  <form method="get" action="/" onClick={logout}>
+                    <Button type="submit">
+                      Sign out
+                    </Button>
+                  </form>
 
+                  <Stack direction="row">
+                    <Center>
+                      {/* <Circle bg={userData.favColour} size='5em' >
+                        <Avatar size='lg' name={userData.username} src={userData.image}></Avatar>
+                      </Circle> */}
+                    </Center>
+                  </Stack>
+           
+                {/* </>
+              ) : (
+                <> */}
+                  <HStack spacing="5" display={{ base: "none", md: "flex" }}>
+                    <form method="get" action="/login">
+                      <Button type="submit">
+                        Login
+                      </Button>
+                    </form>
+                    <form method="get" action="/signup">
+                      <Button type="submit">
+                        Sign up
+                      </Button>
+                    </form>
+                  </HStack>
+                {/* </>
+              )} */}
+      
+            </HStack>
             <IconButton
               size="md"
               fontSize="lg"
