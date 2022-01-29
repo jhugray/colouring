@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Heading, Button, Container, Flex, Spacer, Center} from "@chakra-ui/react";
-
+import { Link } from "react-router-dom";
 // Import other images here
 // import Palette from "../components/Palette";
 import StarTrio from "../components/StarTrio";
@@ -27,11 +27,11 @@ function DrawingBoard() {
   const { savedColours} = userData
 // console.log(userData.savedColours)
 
-const [fillColours, setFillColours] = useState(Array(29).fill("white"));
+const [fillColours, setFillColours] = useState(Array(35).fill("white"));
 // console.log(fillColours)
 
 useEffect(() => {
-    setFillColours(savedColours ? savedColours: Array(29).fill("white"))
+    setFillColours(savedColours ? savedColours: Array(35).fill("white"))
   }, [savedColours])
 
 
@@ -81,8 +81,11 @@ useEffect(() => {
         onClick={() => handleSaveColourBook(fillColours)}>
           Save Your Work
         </Button>
-              ) : (
-            <Center color={currentColour} borderRadius='lg' alignContent>Make an account to save!</Center>
+              ) : ( 
+            <Center color={currentColour} borderRadius='lg' alignContent>Make an account to save!
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Signup</Link>
+            </Center>
               )}
       </Flex>
       <Box bg="white">
@@ -90,7 +93,7 @@ useEffect(() => {
         isLazy
         isFitted
         size="lg"
-        defaultIndex={2}
+        defaultIndex={3}
         variant="soft-rounded">
         <TabList>
           <Tab>Child</Tab>
