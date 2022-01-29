@@ -1,23 +1,22 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-import { 
-  Flex, 
-  Spacer, 
-  Box, 
-  Heading, 
-  Stack, 
-  Avatar, 
-  AvatarBadge
-} from '@chakra-ui/react'
-import { Redirect, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import {GET_ME } from '../../utils/queries';
-
+import {
+  Flex,
+  Spacer,
+  Box,
+  Stack,
+  Avatar,
+  AvatarBadge,
+  Image,
+} from "@chakra-ui/react";
+import { Redirect, useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { GET_ME } from "../../utils/queries";
+import logo from "../../assets/logo.png";
 
 function Nav() {
-
-const logout = event => {
+  const logout = (event) => {
     event.preventDefault();
     Auth.logout();
   };
@@ -34,51 +33,82 @@ const logout = event => {
     return <div>Loading...</div>;
   }
 
-
   return (
     <header className="flex-row px-1">
       <nav>
         <Flex m={8}>
-          <Box bg="tomato" p="10">
-            <Heading size="md">| PAINT |</Heading>
-            
+          <Box boxSize="sm">
+            <Image src={logo} alt="Paint Between the lines logo" />
           </Box>
           <Spacer />
-          <Stack spacing={8} direction="row" align="center">
-          <Link to="/">
-          Home
-        </Link>
-        <Link as="button" to="/DrawingBoard">
-          DrawingBoard
-        </Link>
-        {Auth.loggedIn() ? (
-          <>
-            <Link to="/myprofile">
-              My Profile
-            </Link>
-            <a href="/" onClick={logout}>
-              Logout
-            </a>
+          <Stack spacing={16} direction="row" align="center">
+            <Box
+              borderRadius="md"
+              bg="#2674D1"
+              color="white"
+              px={20}
+              h={10}
+              letterSpacing="widest"
+              fontSize="xl"
+            >
+              <Link to="/">Home</Link>
+            </Box>
+            <Box
+              borderRadius="md"
+              bg="#2674D1"
+              color="white"
+              px={20}
+              h={10}
+              letterSpacing="widest"
+              fontSize="xl"
+            >
+              <Link to="/DrawingBoard">DrawingBoard</Link>
+            </Box>
+            {Auth.loggedIn() ? (
+              <>
+                <Link to="/myprofile">My Profile</Link>
+                <a href="/" onClick={logout}>
+                  Logout
+                </a>
 
-            <Stack direction="row">
-              <Avatar size='lg' name={userData.username} src={userData.image}>
-                  <AvatarBadge borderColor='papayawhip' bg={userData.favColour} boxSize='1.25em' />
-                </Avatar>
-            </Stack>
-          </>
-          
-        ) : (
-          <>
-            <Link to="/signup">
-              Signup
-            </Link>
-            <Link to="/login">
-              Login
-            </Link>
-          </>
-        )}
-      </Stack>
-      </Flex>
+                <Stack direction="row">
+                  <Avatar size="lg" name={userData.username} src={userData.image}>
+                    <AvatarBadge
+                      borderColor="papayawhip"
+                      bg={userData.favColour}
+                      boxSize="1.25em"
+                    />
+                  </Avatar>
+                </Stack>
+              </>
+            ) : (
+              <>
+                <Box
+                  borderRadius="md"
+                  bg="#2674D1"
+                  color="white"
+                  px={20}
+                  h={10}
+                  letterSpacing="widest"
+                  fontSize="xl"
+                >
+                  <Link to="/signup">Signup</Link>
+                </Box>
+                <Box
+                  borderRadius="md"
+                  bg="#2674D1"
+                  color="white"
+                  px={20}
+                  h={10}
+                  letterSpacing="widest"
+                  fontSize="xl"
+                >
+                  <Link to="/login">Login</Link>
+                </Box>
+              </>
+            )}
+          </Stack>
+        </Flex>
       </nav>
     </header>
   );
