@@ -62,9 +62,21 @@ const resolvers = {
           );
         return updatedUser; 
       }
-
       throw new AuthenticationError('Not logged in');
     },
+
+    deleteImage: async (parent, args, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { "image": ''},
+          { new: true }
+          );
+        return updatedUser; 
+      }
+      throw new AuthenticationError('Not logged in');
+    },
+
     
   }
   }

@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import {GET_ME } from '../utils/queries';
-import { UPDATE_USER } from '../utils/mutations';
+import { UPDATE_USER, DELETE_IMAGE } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { Container, Stack, Avatar, AvatarBadge, Select, InputGroup, Button, Input, FormLabel} from '@chakra-ui/react'
 
 const Profile = (props) => {
   const [updateUser] = useMutation(UPDATE_USER);
+  const [deleteImage] = useMutation(DELETE_IMAGE);
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(GET_ME);
   const userData = data?.me || {};
@@ -17,7 +18,7 @@ const Profile = (props) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    
+
     setFormState({
       ...formState,
       [name]: value,
@@ -33,11 +34,13 @@ const Profile = (props) => {
         image: formState.image
       },
     });
-
-
-
-  
   };
+
+  const handleDeleteImage = async (event) => {
+    event.preventDefault();
+    await deleteImage();
+    console.log('you clicked delete')
+  }
 
 
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
@@ -50,18 +53,30 @@ const Profile = (props) => {
 
   return (
     <Container>
-    <Stack direction="row">
+    <Stack>
     <Avatar size='2xl' name={userData.username} src={userData.image}>
         <AvatarBadge borderColor='papayawhip' bg={userData.favColour} boxSize='1em' />
       </Avatar>
         <h1>
           Hi {userData.username}!
         </h1>  
+        <h2>
+        Favourite Colour: {userData.favColour}
+        </h2>
+    <form>
+      <Button onClick={handleDeleteImage}>
+        Delete my profile picture
+      </Button>
+    </form>
+  
     </Stack>
     <Stack>
-      <h2>
-        Favourite Colour: {userData.favColour}
-      </h2>
+    
+
+ 
+    
+    
+
       <form onSubmit={handleFormSubmit} >
       <InputGroup>
       <FormLabel>Update your favourite colour</FormLabel>
@@ -86,11 +101,11 @@ const Profile = (props) => {
                 onChange={handleChange}
               />
               </InputGroup>
-              <InputGroup>
+            
               <Button type="submit">
                 Submit
               </Button>
-            </InputGroup>
+          
 
       </form>
     </Stack>

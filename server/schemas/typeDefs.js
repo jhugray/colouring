@@ -25,6 +25,7 @@ type Mutation {
   savedColours(savedColours: [String]): User
   addUser(username: String!, email: String!, password: String!, favColour: String!, image: String!): Auth
   updateUser(favColour: String, image: String): User
+  deleteImage: User
 }
 
 `;
