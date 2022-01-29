@@ -4,7 +4,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import {GET_ME } from '../utils/queries';
 import { UPDATE_USER, DELETE_IMAGE } from '../utils/mutations';
 import Auth from '../utils/auth';
-import { Container, Stack, Avatar, AvatarBadge, Select, InputGroup, Button, Input, FormLabel} from '@chakra-ui/react'
+import { Circle, Center, Grid, GridItem, Container, Stack, Avatar, AvatarBadge, Select, InputGroup, Button, Input, FormLabel} from '@chakra-ui/react'
 
 const Profile = (props) => {
   const [updateUser] = useMutation(UPDATE_USER);
@@ -53,44 +53,62 @@ const Profile = (props) => {
 
   return (
     <Container>
-    <Stack>
-    <Avatar size='2xl' name={userData.username} src={userData.image}>
-        <AvatarBadge borderColor='papayawhip' bg={userData.favColour} boxSize='1em' />
-      </Avatar>
-        <h1>
-          Hi {userData.username}!
-        </h1>  
-        <h2>
-        Favourite Colour: {userData.favColour}
-        </h2>
-    <form>
-      <Button onClick={handleDeleteImage}>
-        Delete my profile picture
-      </Button>
-    </form>
-  
-    </Stack>
-    <Stack>
-    
+      <Grid
+        templateRows='repeat(2, 1fr)'
+        templateColumns='repeat(2, 1fr)'
+        gap={4}
+      >
 
- 
-    
-    
+      <GridItem colSpan={1} bg='papayawhip' p={4}>
+        <Stack>
+          <Center>
+            <Circle bg={userData.favColour} size='10em' >
+              <Avatar size='2xl' name={userData.username} src={userData.image}></Avatar>
+            </Circle>
+          </Center>
+          
+          <Center>
+          <form>
+            <button onClick={handleDeleteImage}>
+             Delete my profile pic
+            </button>
+          </form> 
+          </Center>
+         
+                   
+        </Stack>
+     
+      </GridItem>
 
-      <form onSubmit={handleFormSubmit} >
-      <InputGroup>
-      <FormLabel>Update your favourite colour</FormLabel>
-        <Select name="favColour"
-          type="favColour"
-          id="favColour" value={formState.favColour}  placeholder='Would you like to update your favourite colour?' onChange={handleChange}>
-          <option value="red" >Red</option>
-          <option value="blue">Blue</option>
-          <option value="yellow">Yellow</option>
-        </Select>
-      </InputGroup>
+      <GridItem colSpan={3} bg='papayawhip' p={4}> 
+        <Stack>
+          <h1>
+            Hi {userData.username}!
+          </h1>
+          <h2> Favourite Colour: {userData.favColour}</h2>
+        </Stack>
+          
+          
 
-      <InputGroup>
-      <FormLabel>Update or add a profile picture</FormLabel>
+         
+      </GridItem>
+
+      <GridItem colSpan={4} bg='tomato' p={6}>
+        <form onSubmit={handleFormSubmit} >
+          <Stack spacing={3}>
+            <InputGroup>
+            <FormLabel>Update your favourite colour</FormLabel>
+              <Select name="favColour"
+                type="favColour"
+                id="favColour" value={formState.favColour}  placeholder='Would you like to update your favourite colour?' onChange={handleChange}>
+                <option value="red" >Red</option>
+                <option value="blue">Blue</option>
+                <option value="yellow">Yellow</option>
+              </Select>
+            </InputGroup>
+
+            <InputGroup>
+              <FormLabel>Update or add a profile picture</FormLabel>
               <Input
                 className="form-input"
                 placeholder="Add a URL(link) to the picture"
@@ -100,21 +118,17 @@ const Profile = (props) => {
                 value={formState.image}
                 onChange={handleChange}
               />
-              </InputGroup>
-            
-              <Button type="submit">
-                Submit
-              </Button>
-          
+            </InputGroup>
+                  
+            <Button type="submit">
+              Submit
+            </Button>
+          </Stack>
+        </form>
+      </GridItem>
 
-      </form>
-    </Stack>
-
-
-
- 
-
-    </Container>
+    </Grid>
+  </Container>
   );
 };
 

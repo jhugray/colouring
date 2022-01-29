@@ -7,8 +7,9 @@ import {
   Box,
   Stack,
   Avatar,
-  AvatarBadge,
   Image,
+  Circle,
+  Center
 } from "@chakra-ui/react";
 import { Redirect, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
@@ -72,13 +73,12 @@ function Nav() {
                 </a>
 
                 <Stack direction="row">
-                  <Avatar size="lg" name={userData.username} src={userData.image}>
-                    <AvatarBadge
-                      borderColor="papayawhip"
-                      bg={userData.favColour}
-                      boxSize="1.25em"
-                    />
-                  </Avatar>
+                <Center>
+            <Circle bg={userData.favColour} size='5em' >
+              <Avatar size='lg' name={userData.username} src={userData.image}></Avatar>
+            </Circle>
+          </Center>
+          
                 </Stack>
               </>
             ) : (
