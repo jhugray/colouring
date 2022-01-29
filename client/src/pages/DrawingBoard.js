@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Heading, Button, Container, Flex, Spacer} from "@chakra-ui/react";
-
+import React, { useState, useEffect } from "react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Heading, Button, Container, Flex, Spacer, Center} from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 // Import other images here
 // import Palette from "../components/Palette";
 import StarTrio from "../components/StarTrio";
@@ -21,13 +21,19 @@ function DrawingBoard() {
   // Path's get color filled
 
 
-  const { data } = useQuery(GET_ME);
-console.log(data)
-  const userData = data?.me || {};
-console.log(userData)
-  const [fillColours, setFillColours] = useState(userData?.savedColours || Array(29).fill("white"));
-  // Current colour, How to set new colour
-//   const [currentColour, setCurrentColour] = useState("white");
+  const { loading, data } = useQuery(GET_ME);
+// console.log(data)
+  const userData = data?.me || [];
+  const { savedColours} = userData
+// console.log(userData.savedColours)
+
+const [fillColours, setFillColours] = useState(Array(35).fill("white"));
+// console.log(fillColours)
+
+useEffect(() => {
+    setFillColours(savedColours ? savedColours: Array(35).fill("white"))
+  }, [savedColours])
+
 
   const [saveColours] = useMutation(SAVE_COLOURS);
   // How to change Colour
@@ -35,7 +41,7 @@ console.log(userData)
     let newFillColours = fillColours.slice(0);
     newFillColours[i] = currentColour;
     setFillColours(newFillColours);
-    console.log(newFillColours);
+    // console.log(newFillColours);
   };
 
   const handleSaveColourBook = async (i) => {
@@ -53,7 +59,7 @@ console.log(userData)
   
 
     try {
-      const response = await saveColours({
+    await saveColours({
     variables: {savedColours:fillColours},
       });
     } catch (err) {
@@ -61,21 +67,33 @@ console.log(userData)
     }
   };
 
+  
+  if (loading) {
+    return <h2>LOADING...</h2>;
+  }
   return (
     <Container maxW='container.sm' bg={currentColour} centerContent>
-      <Flex w="100%" bg="white" p={4}>
+      <Flex w="412px" bg="white" p={1}>
         <Heading>Drawing Board</Heading>
         <Spacer />
+        {Auth.loggedIn() ? (
         <Button  colorScheme="green"
         onClick={() => handleSaveColourBook(fillColours)}>
           Save Your Work
         </Button>
+              ) : ( 
+            <Center color={currentColour} borderRadius='lg' alignContent>Make an account to save!
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Signup</Link>
+            </Center>
+              )}
       </Flex>
       <Box bg="white">
       <Tabs
         isLazy
         isFitted
         size="lg"
+        defaultIndex={3}
         variant="soft-rounded">
         <TabList>
           <Tab>Child</Tab>
@@ -104,17 +122,14 @@ console.log(userData)
       </Tabs>
       </Box>
       {/* <Palette currentColour={currentColour} changeColour={setCurrentColour} /> */}
-
-      {/* We may want to switch to react-color */}
         <GithubPicker
           color={currentColour}
           onChangeComplete={(colour) => {
             setColour(colour.hex);
           }}
-          width="250px"
-          colours={['#B80000', '#DB3E00', '#FCCB00', '#008B02', '#006B76', '#1273DE', '#004DCF', '#5300EB', '#EB9694', '#FAD0C3', '#FEF3BD', '#C1E1C5', '#BEDADC', '#C4DEF6', '#BED3F3', '#D4C4FB']}
+          width="412px"
+          colors={['#8D5524','#E0AC69','#C68642','#F1C27D', '#FFDBAC','#FFFFFF','#B80000', '#DB3E00', '#FCCB00', '#008B02', '#006B76', '#1273DE', '#004DCF', '#5300EB', '#EB9694', '#FAD0C3', "#3B2219", "#d2b179", "#795548", "#f3d6b9", "#FFECB3", "#000000", "#e91e63", "#bf360c", "#fcb900", '#8bc34a', '#4dd0e1', '#b3e5fc', '#2d3986', '#9c27b0', '#bf4340', '#f8bbd0']}
           triangle="hide" />
-        
     </Container>
   );
 }
