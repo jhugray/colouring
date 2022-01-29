@@ -43,12 +43,12 @@ const Login = (props) => {
  
     <Container>
 
-      <Heading  as='h1' size='xl' p={3}>
+      <Heading as='h1' size='xl' p={3}>
         Login
       </Heading>
 
       <form onSubmit={handleFormSubmit}>
-        <Stack spacing={3}>  
+        <Stack spacing={4}>  
 
           <InputGroup>
           <InputLeftAddon>Email</InputLeftAddon>
@@ -79,13 +79,11 @@ const Login = (props) => {
           <Button className="btn d-block w-100" type="submit">
             Submit
           </Button>
-
+        {error && <div>Login failed</div>}
       </Stack>
       </form>
-      {error && <div>Login failed</div>}
-      
-    </Container>
 
+    </Container>
   );
 };
 
