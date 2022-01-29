@@ -6,6 +6,7 @@ import { GET_ME } from "../../utils/queries";
 
 import {
   Center,
+  Container,
   Circle,
   Avatar,
   chakra,
@@ -35,11 +36,10 @@ function Nav() {
     Auth.logout();
   };
 
-
+  //this breaks the code rn 
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(GET_ME);
   const userData = data?.me || {};
-
 
   const { toggleColorMode: toggleMode } = useColorMode();
   const text = useColorModeValue("dark", "light");
@@ -71,6 +71,7 @@ function Nav() {
   const MobileNavContent = (
     <VStack
       pos="absolute"
+      w="full"
       top={0}
       left={0}
       right={0}
@@ -89,39 +90,53 @@ function Nav() {
         justifySelf="self-start"
         onClick={mobileNav.onClose}
       />
-      <form method="get" action="/DrawingBoard">
+      <Container w="full">
+        <form method="get" action="/DrawingBoard">
         <Button variant="ghost" w="full" type="submit">
           Colouring Page
         </Button>
       </form>
+      </Container>
+      
 
       {Auth.loggedIn() ? (
         <>
-          <form method="get" action="/myprofile">
-            <Button variant="ghost" w="full" type="submit">
-              Profile Page
-            </Button>
-          </form>
+          <Container w="full" variant="ghost" >
+            <form method="get" action="/myprofile">
+              <Button variant="ghost" w="full" type="submit">
+                Profile Page
+              </Button>
+            </form>
+          </Container>
 
-          <form method="get" action="/">
-            <Button variant="ghost" w="full" type="submit" onClick={logout}>
-              Sign out
-            </Button>
-          </form>
+          <Container w="full">
+            <form method="get" action="/">
+              <Button variant="ghost" w="full" type="submit" onClick={logout}>
+                Sign out
+              </Button>
+            </form>
+          </Container>
         </>
        ) : (
         <>
+        <Container w="full">
           <form method="get" action="/login">
             <Button variant="ghost" w="full" type="submit">
               Login
             </Button>
           </form>
-
+        </Container>
+         
+        
+        <Container w="full">
           <form method="get" action="/signup">
             <Button variant="ghost" w="full" type="submit">
               Sign up
             </Button>
           </form>
+        </Container>
+
+          
         
         </>
       )}
