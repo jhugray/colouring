@@ -26,7 +26,7 @@ import {
 import { useViewportScroll } from "framer-motion";
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaMoon, FaSun } from "react-icons/fa";
-import logo from "../../assets/logo/paintnobackground.png"
+import logo from "../../assets/logo/logo-nobackground.png"
 
 
 function Nav() {

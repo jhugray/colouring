@@ -73,22 +73,30 @@ useEffect(() => {
     return <h2>LOADING...</h2>;
   }
   return (
-    <Container>
-    <Heading m={6}>Colouring Pages</Heading>
-    <Container maxW='container.sm' bg={currentColour} centerContent p={5}>
-      
-
-      <Box>
+    <Container maxW='container.sm' bg={currentColour} centerContent>
+      <Flex w="412px" bg="white" p={1}>
+        <Heading>Drawing Board</Heading>
+        <Spacer />
+        {Auth.loggedIn() ? (
+        <Button  colorScheme="green"
+        onClick={() => handleSaveColourBook(fillColours)}>
+          Save Your Work
+        </Button>
+              ) : ( 
+            <Center color={currentColour} borderRadius='lg' alignContent>Make an account to save!
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Signup</Link>
+            </Center>
+              )}
+      </Flex>
+      <Box bg="white">
       <Tabs
         isLazy
         isFitted
         size="lg"
         defaultIndex={3}
-        variant="soft-rounded"
-       >
-
-        <TabList
-          bg="white">
+        variant="soft-rounded">
+        <TabList>
           <Tab>Child</Tab>
           <Tab>HelloWorld</Tab>
           <Tab>House</Tab>
@@ -123,25 +131,6 @@ useEffect(() => {
           width="412px"
           colors={['#8D5524','#E0AC69','#C68642','#F1C27D', '#FFDBAC','#FFFFFF','#B80000', '#DB3E00', '#FCCB00', '#008B02', '#006B76', '#1273DE', '#004DCF', '#5300EB', '#EB9694', '#FAD0C3', "#3B2219", "#d2b179", "#795548", "#f3d6b9", "#FFECB3", "#000000", "#e91e63", "#bf360c", "#fcb900", '#8bc34a', '#4dd0e1', '#b3e5fc', '#2d3986', '#9c27b0', '#bf4340', '#f8bbd0']}
           triangle="hide" />
-
-
-
-    
-
-
-    </Container>
-
-    {Auth.loggedIn() ? (
-        <Button m={3}
-        onClick={() => handleSaveColourBook(fillColours)}>
-          Save Your Work
-        </Button>
-              ) : ( 
-            <Center color={currentColour} borderRadius='lg' alignContent>Make an account to save!
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Signup</Link>
-            </Center>
-              )}
     </Container>
   );
 }
