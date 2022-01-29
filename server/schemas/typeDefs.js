@@ -23,7 +23,7 @@ type Query {
 type Mutation {
   login(email: String!, password: String!): Auth
   savedColours(savedColours: [String]): User
-  addUser(username: String!, email: String!, password: String!, favColour: String!, image: String!): Auth
+  addUser(username: String!, email: String!, password: String!, favColour: String!): Auth
   updateUser(favColour: String, image: String): User
   deleteImage: User
 }

@@ -63,7 +63,6 @@ useEffect(() => {
     await saveColours({
     variables: {savedColours:fillColours},
       });
-      console.log(response)
     } catch (err) {
       console.error(err);
     }
