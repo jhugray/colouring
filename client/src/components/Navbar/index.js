@@ -89,6 +89,7 @@ function Nav() {
       spacing={3}
       rounded="sm"
       shadow="sm"
+      zIndex={200}
     >
       <CloseButton
         aria-label="Close menu"
@@ -175,7 +176,7 @@ function Nav() {
               </HStack>
             </Link>
           </Flex>
-          <Flex justify="flex-end" align="center" color="gray.400">
+          <Flex justify="flex-end" align="center" color="gray.400" zIndex={200}>
             <HStack spacing="5" display={{ base: "none", md: "flex" }}>
               <form method="get" action="/">
                 <Button

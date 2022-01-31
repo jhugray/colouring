@@ -17,7 +17,10 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  VStack, Divider, Text, Stack
+  VStack, Divider, Text, Stack, Grid,
+  useColorModeValue,
+  Center,
+  Link
 } from "@chakra-ui/react";
 
 // import { Link } from "react-router-dom";
@@ -47,7 +50,7 @@ function DrawingBoard() {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
-
+  const text = useColorModeValue("dark", "light");
   const [fillColours, setFillColours] = useState(Array(35).fill("white"));
   // console.log(fillColours)
 
@@ -101,12 +104,12 @@ function DrawingBoard() {
         p={5}
       >
         <Stack spacing={18} direction='row' align='center' m={2}>
-        <Button ref={btnRef} onClick={onOpen} bg="white" borderRadius="lg">
+        <Button ref={btnRef} onClick={onOpen} color={text} borderRadius="lg">
           How it works
         </Button>
         {Auth.loggedIn() ? (
         <>
-          <Button m={3} onClick={() => handleSaveColourBook(fillColours)}>
+          <Button color={text} m={3} onClick={() => handleSaveColourBook(fillColours)}>
             Save Your Work
           </Button>
         </>
@@ -153,9 +156,20 @@ function DrawingBoard() {
             </DrawerBody>
 
             <DrawerFooter borderTopWidth="2px">
-              <h2>Made by: </h2>
-              <h3>Jess</h3>
-              <h3>Andrew</h3>
+        
+            <Grid templateColumns='repeat(3, 1fr)' gap={6}>
+           <Center w='180px' h='10' bg={currentColour} fontWeight="bold" centerContent>
+           🎨 Made By: </Center>
+           <Center w='180px' h='10' bg={currentColour} fontWeight="bold" centerContent>
+           <Link href='https://github.com/jhugray' isExternal>  
+           Jess
+           </Link>
+           </Center>
+           <Center w='180px' h='10' bg={currentColour} fontWeight="bold" centerContent>
+           <Link href='https://github.com/azuryte5' isExternal>
+           Andrew</Link> 
+           </Center>
+          </Grid>
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
@@ -168,7 +182,7 @@ function DrawingBoard() {
             defaultIndex={0}
             variant="soft-rounded"
           >
-            <TabList bg="white" borderRadius="lg">
+            <TabList bg="white" borderRadius="lg" size="sm" p={1} >
               <Tab>Child</Tab>
               <Tab>HelloWorld</Tab>
               <Tab>House</Tab>
