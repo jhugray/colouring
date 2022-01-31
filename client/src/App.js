@@ -10,7 +10,8 @@ import Home from "./pages/Home";
 import DrawingBoard from "./pages/DrawingBoard";
 import Profile from "./pages/Profile";
 import NoMatch from './pages/NoMatch';
-import Navbar  from './components/Navbar'
+import Navbar  from './components/Navbar';
+import Footer from './components/Footer'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -46,7 +47,9 @@ function App() {
           <Route exact path="/drawingBoard" component={DrawingBoard} />
           <Route component={NoMatch}/>
         </Switch>
+      <Footer />
       </Router>
+     
       </ApolloProvider>
       </ChakraProvider>
     </div>

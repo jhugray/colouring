@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Heading, Button, Container, Flex, Spacer, Center} from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Heading, Button, Container} from "@chakra-ui/react";
+
 // Import other images here
 // import Palette from "../components/Palette";
 import StarTrio from "../components/StarTrio";
