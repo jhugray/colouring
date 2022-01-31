@@ -132,15 +132,19 @@ useEffect(() => {
     </Container>
 
     {Auth.loggedIn() ? (
+      <>
         <Button m={3}
         onClick={() => handleSaveColourBook(fillColours)}>
           Save Your Work
         </Button>
+      </>
+      
               ) : ( 
-            <Center color={currentColour} borderRadius='lg' alignContent>Make an account to save!
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Signup</Link>
-            </Center>
+                <>
+                 <form method="get" action="/signup">
+                  <Button m={4} type="submit">Login or Signup to save your work!</Button>
+                </form>
+                </>
               )}
     </Container>
   );
