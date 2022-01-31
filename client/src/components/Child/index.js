@@ -1,5 +1,5 @@
 import React from "react";
-// <?xml version="1.0" encoding="UTF-8" standalone="no"?> <!-- Created with Vectornator for iOS (http://vectornator.io/) --><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
 class Child extends React.Component {
   render() {
     return (
@@ -94,7 +94,6 @@ class Child extends React.Component {
             fill="none"
           />
           <path
-           
             strokeWidth="79.9569"
             strokeLinejoin="round"
             strokeLinecap="round"
