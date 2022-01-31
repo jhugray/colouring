@@ -75,8 +75,7 @@ useEffect(() => {
   return (
     <Container>
     <Heading m={6}>Colouring Pages</Heading>
-    <Container maxW='container.sm' bg={currentColour} centerContent p={5}>
-      
+    <Container borderRadius="lg" maxW='container.sm' bg={currentColour} centerContent p={5}>
 
       <Box>
       <Tabs
@@ -88,7 +87,8 @@ useEffect(() => {
        >
 
         <TabList
-          bg="white">
+          bg="white"
+          borderRadius="lg">
           <Tab>Child</Tab>
           <Tab>HelloWorld</Tab>
           <Tab>House</Tab>
@@ -116,6 +116,7 @@ useEffect(() => {
       </Box>
       {/* <Palette currentColour={currentColour} changeColour={setCurrentColour} /> */}
         <GithubPicker
+          borderRadius="lg"
           color={currentColour}
           onChangeComplete={(colour) => {
             setColour(colour.hex);
@@ -123,11 +124,6 @@ useEffect(() => {
           width="412px"
           colors={['#8D5524','#E0AC69','#C68642','#F1C27D', '#FFDBAC','#FFFFFF','#B80000', '#DB3E00', '#FCCB00', '#008B02', '#006B76', '#1273DE', '#004DCF', '#5300EB', '#EB9694', '#FAD0C3', "#3B2219", "#d2b179", "#795548", "#f3d6b9", "#FFECB3", "#000000", "#e91e63", "#bf360c", "#fcb900", '#8bc34a', '#4dd0e1', '#b3e5fc', '#2d3986', '#9c27b0', '#bf4340', '#f8bbd0']}
           triangle="hide" />
-
-
-
-    
-
 
     </Container>
 
