@@ -96,7 +96,7 @@ function Nav() {
         onClick={mobileNav.onClose}
       />
       <Container w="full">
-        <form method="get" action="/DrawingBoard">
+        <form method="get" action="/">
         <Button variant="ghost" w="full" type="submit">
           Colouring Page
         </Button>
@@ -177,7 +177,7 @@ function Nav() {
           </Flex>
           <Flex justify="flex-end" align="center" color="gray.400">
             <HStack spacing="5" display={{ base: "none", md: "flex" }}>
-              <form method="get" action="/DrawingBoard">
+              <form method="get" action="/">
                 <Button
                 type="submit"
                 bg={bg}
