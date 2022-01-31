@@ -27,7 +27,6 @@ type Mutation {
   updateUser(favColour: String, image: String): User
   deleteImage: User
 }
-
 `;
 
 module.exports = typeDefs;
