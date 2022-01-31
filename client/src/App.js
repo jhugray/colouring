@@ -6,8 +6,8 @@ import "./App.css";
 import {ChakraProvider} from '@chakra-ui/react';
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import Home from "./pages/Home";
-import DrawingBoard from "./pages/DrawingBoard";
+// import Home from "./pages/Home";
+import ColouringPage from "./pages/ColouringPage";
 import Profile from "./pages/Profile";
 import NoMatch from './pages/NoMatch';
 import Navbar  from './components/Navbar';
@@ -40,11 +40,10 @@ function App() {
       <Router>
         <Navbar />
         <Switch>         
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={ColouringPage} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} /> 
-          <Route exact path="/myprofile" component={Profile} /> 
-          <Route exact path="/drawingBoard" component={DrawingBoard} />
+          <Route exact path="/myProfile" component={Profile} /> 
           <Route component={NoMatch}/>
         </Switch>
       <Footer />
