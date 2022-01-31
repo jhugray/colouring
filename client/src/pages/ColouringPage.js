@@ -128,7 +128,7 @@ function DrawingBoard() {
           placement="right"
           onClose={onClose}
           finalFocusRef={btnRef}
-          size={"lg"}
+          size={"md"}
         >
           <DrawerOverlay />
           <DrawerContent>
@@ -158,14 +158,14 @@ function DrawingBoard() {
             <DrawerFooter borderTopWidth="2px">
         
             <Grid templateColumns='repeat(3, 1fr)' gap={6}>
-           <Center w='180px' h='10' bg={currentColour} fontWeight="bold" centerContent>
+           <Center w={100} h='10' bg={currentColour} fontWeight="bold" centerContent>
            🎨 Made By: </Center>
-           <Center w='180px' h='10' bg={currentColour} fontWeight="bold" centerContent>
+           <Center w={100} h='10' bg={currentColour} fontWeight="bold" centerContent>
            <Link href='https://github.com/jhugray' isExternal>  
            Jess
            </Link>
            </Center>
-           <Center w='180px' h='10' bg={currentColour} fontWeight="bold" centerContent>
+           <Center w={100} h='10' bg={currentColour} fontWeight="bold" centerContent>
            <Link href='https://github.com/azuryte5' isExternal>
            Andrew</Link> 
            </Center>
