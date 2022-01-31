@@ -26,7 +26,12 @@ import {
 import { useViewportScroll } from "framer-motion";
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaMoon, FaSun } from "react-icons/fa";
-import logo from "../../assets/logo/paintnobackground.png"
+// import logo from "../../assets/logo/logo-nobackground.png"
+// import logo from "../../assets/logo/candriptop.png"
+// import logo from "../../assets/logo/dripcanside.png"
+// import logo from "../../assets/logo/difffont.png"
+import logo from "../../assets/logo/monitor.png"
+// import logo from "../../assets/logo/largemonitor.png"
 
 
 function Nav() {
@@ -165,9 +170,8 @@ function Nav() {
         >
           <Flex align="flex-start">
             <Link href="/">
-              <HStack>
-              <Image src={logo}></Image>
-
+              <HStack mt={9}>
+              <Image  src={logo}></Image>
               </HStack>
             </Link>
           </Flex>
