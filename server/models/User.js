@@ -25,7 +25,8 @@ const userSchema = new Schema({
     trim: true
   },
   image: {
-    type: String
+    type: String,
+    trim: true
   },
   savedColours: []
 });
