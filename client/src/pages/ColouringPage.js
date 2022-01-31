@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
+  OrderedList,
+  ListItem,
   Tabs,
   TabList,
   TabPanels,
@@ -144,36 +146,38 @@ function DrawingBoard() {
             <DrawerBody>
               <VStack direction="row" h="100px" p={4}>
                 <Divider orientation="vertical" />
-                <Text>Users can make an account to save their colouring progress in fillable areas</Text>
+                  <Text>Users can make an account to save their colouring progress in fillable areas</Text>
                 <Divider orientation="vertical" />
-                <Container bg='beige' borderRadius="md" borderWidth='10px' borderColor='gray.200'>
+                <Container borderRadius="md" borderWidth='10px' borderColor='gray.200'>
                   <Text fontSize='32px'> Let's Paint</Text>
-                  <ol>
-                  <li>Click on Sign up / Login </li>
-                  <li>Select an image to colour</li>
-                  <li>Choose a colour from the selection below </li>
-                  <li>Hit save to record your progress</li>
-                  <li>Upload or remove an Avatar photo</li>
-                  </ol>
+                  <OrderedList>
+                    <ListItem>Click on Sign up / Login </ListItem>
+                    <ListItem>Select an image to colour</ListItem>
+                    <ListItem>Choose a colour from the selection below </ListItem>
+                    <ListItem>Hit save to record your progress</ListItem>
+                    <ListItem>Upload or remove an Avatar photo</ListItem>
+                  </OrderedList>
                 </Container>
               </VStack>
             </DrawerBody>
 
             <DrawerFooter borderTopWidth="2px">
-        
-            <Grid templateColumns='repeat(3, 1fr)' gap={6}>
-           <Center w={100} h='10' bg={currentColour} fontWeight="bold" centerContent>
-           🎨 Made By: </Center>
-           <Center w={100} h='10' bg={currentColour} fontWeight="bold" centerContent>
-           <Link href='https://github.com/jhugray' isExternal>  
-           Jess
-           </Link>
-           </Center>
-           <Center w={100} h='10' bg={currentColour} fontWeight="bold" centerContent>
-           <Link href='https://github.com/azuryte5' isExternal>
-           Andrew</Link> 
-           </Center>
-          </Grid>
+              <Grid templateColumns='repeat(3, 1fr)' gap={6}>
+                <Center w={100} h='10' bg={currentColour} fontWeight="bold" centerContent>
+                  <span role="img" aria-label="paint palette emoji">🎨 </span>
+                  Made By: 
+                </Center>
+                <Center w={100} h='10' bg={currentColour} fontWeight="bold" centerContent>
+                  <Link href='https://github.com/jhugray' isExternal>  
+                  Jess
+                  </Link>
+                </Center>
+                <Center w={100} h='10' bg={currentColour} fontWeight="bold" centerContent>
+                  <Link href='https://github.com/azuryte5' isExternal>
+                  Andrew
+                  </Link> 
+                </Center>
+              </Grid>
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
