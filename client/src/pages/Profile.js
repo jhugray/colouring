@@ -4,7 +4,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import {GET_ME } from '../utils/queries';
 import { UPDATE_USER, DELETE_IMAGE } from '../utils/mutations';
 import Auth from '../utils/auth';
-import { Heading, Circle, Center, Grid, GridItem, Container, Stack, Avatar, AvatarBadge, Select, InputGroup, Button, Input, FormLabel} from '@chakra-ui/react'
+import { Heading, Circle, Center, Grid, GridItem, Container, Stack, Avatar, Select, InputGroup, Button, Input, FormLabel} from '@chakra-ui/react'
 
 const Profile = (props) => {
   const [updateUser] = useMutation(UPDATE_USER);

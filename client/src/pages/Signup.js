@@ -43,6 +43,10 @@ const Signup = () => {
 
     <Container>
       <Heading as='h1' size='xl' p={3}>Sign up</Heading>
+
+
+
+    
       <form onSubmit={handleFormSubmit}>
         <Stack spacing={4}>
           <InputGroup>
@@ -105,7 +109,6 @@ const Signup = () => {
           {error && <div>Signup failed</div>}
         </Stack>
       </form>
-
     </Container>    
   );
 };
