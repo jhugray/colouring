@@ -33,7 +33,6 @@ import { FaMoon, FaSun } from "react-icons/fa";
 import logo from "../../assets/logo/monitor.png"
 // import logo from "../../assets/logo/largemonitor.png"
 
-
 function Nav() {
   
   const logout = (event) => {
@@ -41,7 +40,6 @@ function Nav() {
     Auth.logout();
   };
 
-  //this breaks the code rn 
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(GET_ME);
   const userData = data?.me || {};
@@ -63,8 +61,6 @@ function Nav() {
   const colourModeVal = useColorModeValue("gray.200", "gray.900");
   const colourModeVal2 = useColorModeValue("gray.800", "inherit")
 
-  
-  
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Redirect to="/profile" />;
   }
@@ -98,13 +94,12 @@ function Nav() {
       />
       <Container w="full">
         <form method="get" action="/">
-        <Button variant="ghost" w="full" type="submit">
-          Colouring Page
-        </Button>
-      </form>
+          <Button variant="ghost" w="full" type="submit">
+            Colouring Page
+          </Button>
+        </form>
       </Container>
       
-
       {Auth.loggedIn() ? (
         <>
           <Container w="full" variant="ghost" >
@@ -133,7 +128,6 @@ function Nav() {
           </form>
         </Container>
          
-        
         <Container w="full">
           <form method="get" action="/signup">
             <Button variant="ghost" w="full" type="submit">
@@ -141,9 +135,6 @@ function Nav() {
             </Button>
           </form>
         </Container>
-
-          
-        
         </>
       )}
     </VStack>
@@ -180,17 +171,17 @@ function Nav() {
             <HStack spacing="5" display={{ base: "none", md: "flex" }}>
               <form method="get" action="/">
                 <Button
-                type="submit"
-                bg={bg}
-                color="gray.500"
-                display="inline-flex"
-                alignItems="center"
-                fontSize="md"
-                _hover={{ color: cl }}
-                _focus={{ boxShadow: "none" }}
-              >
-                Colouring Page
-              </Button>
+                  type="submit"
+                  bg={bg}
+                  color="gray.500"
+                  display="inline-flex"
+                  alignItems="center"
+                  fontSize="md"
+                  _hover={{ color: cl }}
+                  _focus={{ boxShadow: "none" }}
+                >
+                  Colouring Page
+                </Button>
               </form>
               {Auth.loggedIn() ? (
                 <>
@@ -222,7 +213,6 @@ function Nav() {
                       </Circle>
                     </Center>
                   </Stack>
-           
                 </>
               ) : (
                 <>
@@ -240,7 +230,6 @@ function Nav() {
                   </HStack>
                 </>
               )}
-      
             </HStack>
             <IconButton
               size="md"

@@ -40,9 +40,7 @@ const Login = (props) => {
   };
 
   return (
- 
     <Container>
-
       <Heading as='h1' size='xl' p={3}>
         Login
       </Heading>

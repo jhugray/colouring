@@ -17,18 +17,22 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  VStack, Divider, Text, Stack, Grid,
+  VStack, 
+  Divider, 
+  Text, 
+  Stack, 
+  Grid,
   useColorModeValue,
   Center,
   Link
 } from "@chakra-ui/react";
 
-// import { Link } from "react-router-dom";
 // Import other images here
 import StarTrio from "../components/StarTrio";
 import HelloWorld from "../components/HelloWorld";
 import House from "../components/House";
 import Child from "../components/Child";
+
 import { useMutation } from "@apollo/client";
 import { SAVE_COLOURS } from "../utils/mutations";
 import Auth from "../utils/auth";
@@ -117,7 +121,7 @@ function DrawingBoard() {
         <>
           <form method="get" action="/signup">
             <Button m={4} type="submit">
-              Login or Signup to save your work!
+              Login or Sign up to save your work!
             </Button>
           </form>
         </>
@@ -145,7 +149,7 @@ function DrawingBoard() {
                 <Container bg='beige' borderRadius="md" borderWidth='10px' borderColor='gray.200'>
                   <Text fontSize='32px'> Let's Paint</Text>
                   <ol>
-                  <li>Click on Signup / Login </li>
+                  <li>Click on Sign up / Login </li>
                   <li>Select an image to colour</li>
                   <li>Choose a colour from the selection below </li>
                   <li>Hit save to record your progress</li>
@@ -205,7 +209,7 @@ function DrawingBoard() {
             </TabPanels>
           </Tabs>
         </Box>
-        {/* <Palette currentColour={currentColour} changeColour={setCurrentColour} /> */}
+
         <GithubPicker
           borderRadius="lg"
           color={currentColour}

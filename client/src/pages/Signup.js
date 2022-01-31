@@ -40,12 +40,8 @@ const Signup = () => {
   };
 
   return (
-
     <Container>
       <Heading as='h1' size='xl' p={3}>Sign up</Heading>
-
-
-
     
       <form onSubmit={handleFormSubmit}>
         <Stack spacing={4}>

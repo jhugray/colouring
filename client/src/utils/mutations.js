@@ -62,9 +62,8 @@ mutation deleteImage {
     favColour
     image
     savedColours
-}
+  }
 }
 `
-
 
 // Going to need a query_colours to load older colourings state

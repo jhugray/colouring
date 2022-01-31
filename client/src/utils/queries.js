@@ -2,13 +2,13 @@ import gql from "graphql-tag";
 
 export const GET_ME = gql`
 {
-    me {
-      _id
-      username
-      email
-      favColour
-      image
-      savedColours
-    }
+  me {
+    _id
+    username
+    email
+    favColour
+    image
+    savedColours
+  }
 }
 `;
