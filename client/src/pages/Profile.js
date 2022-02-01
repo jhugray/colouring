@@ -4,7 +4,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import {GET_ME } from '../utils/queries';
 import { UPDATE_USER, DELETE_IMAGE } from '../utils/mutations';
 import Auth from '../utils/auth';
-import { Heading, Circle, Center, Grid, GridItem, Container, Stack, Avatar, Select, InputGroup, Button, Input, FormLabel} from '@chakra-ui/react'
+import { Heading, Circle, Center, Grid, GridItem, Container, Stack, VStack, Avatar, Select, InputGroup, Button, Input, FormLabel} from '@chakra-ui/react'
 
 const Profile = (props) => {
   const [updateUser] = useMutation(UPDATE_USER);
@@ -62,7 +62,7 @@ const Profile = (props) => {
       <GridItem colSpan={1} p={4}>
         <Stack>
           <Center>
-            <Circle bg={userData.favColour} size='10em' >
+            <Circle bg={userData.favColour} size='10rem' >
               <Avatar size='2xl' name={userData.username} src={userData.image}></Avatar>
             </Circle>
           </Center>
@@ -75,14 +75,14 @@ const Profile = (props) => {
       </GridItem>
 
       <GridItem colSpan={3} p={4}> 
-        <Stack m={4}>
-          <Heading as='h1' size='2xl' p={3}>
+        <VStack m={4}>
+          <Heading as='h1' size='6rem' p={2}>
             Hi {userData.username}!
           </Heading>
-          <Heading as='h2' size='md' > 
+          <Heading as='h2' size='3rem' > 
             Favourite colour: {userData.favColour}
           </Heading>
-        </Stack>
+        </VStack>
       </GridItem>
 
       <GridItem colSpan={4} p={6}>

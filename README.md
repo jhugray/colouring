@@ -24,7 +24,10 @@ The link to the heroku: [Need to set this up still!]
 ## Usage
 Paint Between the Lines is a react colouring app. Users can sign up for an account to be able to save progress. Upload an avatar image and complete a colouring book of several images.
 
-[Insert Images]
+Image below shows a colored in colouring page
+ 
+![colouringBook](https://user-images.githubusercontent.com/85147307/152003893-e56946e1-565f-4609-997b-1956f47ba182.png)
+
 -----
 ## Tech Used 
 - Apollo Server Express
