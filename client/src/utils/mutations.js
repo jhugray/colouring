@@ -66,4 +66,16 @@ mutation deleteImage {
 }
 `
 
+export const DELETE_COLOURS = gql `
+mutation deleteColouring {
+  deleteColouring {
+    _id
+    username
+    email
+    favColour
+    image
+    savedColours
+  }
+}
+`
 // Going to need a query_colours to load older colourings state
