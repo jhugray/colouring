@@ -1,3 +1,25 @@
+.palette {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  background-color: silver;
+}
+
+.colour-swatch {
+  height: 50px;
+  width: 50px;
+  border-radius: 7px;
+  margin: 9px;
+  cursor: pointer;
+  border: 4px solid black;
+}
+
+.colour-swatch-active {
+  box-shadow: inset 0 0 15px #000000;
+  transition: all 0.2s;
+}
+
 .App {
   text-align: center;
 }
