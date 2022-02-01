@@ -33,7 +33,6 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
   },
-
     savedColours: async (parent, { savedColours }, context) => {
     if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
@@ -63,7 +62,6 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in');
     },
-
     deleteImage: async (parent, args, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
@@ -75,10 +73,7 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in');
     },
-
-    
   }
   }
-
 
 module.exports = resolvers;

@@ -93,9 +93,17 @@ const Profile = (props) => {
               <Select name="favColour"
                 type="favColour"
                 id="favColour" value={formState.favColour}  placeholder='Would you like to update your favourite colour?' onChange={handleChange}>
-                <option value="red" >Red</option>
-                <option value="blue">Blue</option>
+                <option value="lightpink">Pink</option>
+                <option value="red">Red</option>
+                <option value="darkorange">Orange</option>
                 <option value="yellow">Yellow</option>
+                <option value="green">Green</option>
+                <option value="lime">Lime</option>
+                <option value="aqua">Aqua</option>
+                <option value="blue">Blue</option>
+                <option value="purple">Purple</option>
+                <option value="fuchsia">Fuchsia</option>
+                <option value="gray">Grey</option>
               </Select>
             </InputGroup>
 

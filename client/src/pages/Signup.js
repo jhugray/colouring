@@ -40,12 +40,8 @@ const Signup = () => {
   };
 
   return (
-
     <Container>
       <Heading as='h1' size='xl' p={3}>Sign up</Heading>
-
-
-
     
       <form onSubmit={handleFormSubmit}>
         <Stack spacing={4}>
@@ -93,12 +89,20 @@ const Signup = () => {
             <Select name="favColour"
               type="favColour"
               id="favColour" 
-              value={formState.favColour} 
+              value={formState.favColour}
               onChange={handleChange} 
               placeholder='Select your favourite colour!'>
+              <option value="lightpink">Pink</option>
               <option value="red" >Red</option>
-              <option value="blue">Blue</option>
+              <option value="darkorange">Orange</option>
               <option value="yellow">Yellow</option>
+              <option value="green">Green</option>
+              <option value="lime">Lime</option>
+              <option value="aqua">Aqua</option>
+              <option value="blue">Blue</option>
+              <option value="purple">Purple</option>
+              <option value="fuchsia">Fuchsia</option>
+              <option value="gray">Grey</option>
             </Select>
           </InputGroup>
 
