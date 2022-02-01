@@ -26,7 +26,10 @@ import {
   Grid,
   useColorModeValue,
   Center,
-  Link
+  Link,
+  Img,
+  Spacer,
+  createStandaloneToast 
 } from "@chakra-ui/react";
 
 // Import other images here
@@ -44,16 +47,17 @@ import { useQuery } from "@apollo/react-hooks";
 
 function DrawingBoard() {
   //For react-color front test
-  const [currentColour, setColour] = useState("#B80000");
+  const [currentColour, setColour] = useState("#C0C0C0");
   // console.log(currentColour)
   // Path's get color filled
 
   const { loading, data } = useQuery(GET_ME);
   // console.log(data)
   const userData = data?.me || [];
-  const { savedColours } = userData;
-  // console.log(userData.savedColours)
+  const { savedColours, favColour } = userData;
+  console.log(userData)
 
+  const toast = createStandaloneToast()
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   const text = useColorModeValue("dark", "light");
@@ -73,12 +77,21 @@ function DrawingBoard() {
     console.log(newFillColours);
     newFillColours[i] = currentColour;
     setFillColours(newFillColours);
-    // console.log(newFillColours);
   };
 
   const handleDeleteColours = async (event) => {
     event.preventDefault();
-    await deleteColours();
+    await deleteColours().then(
+      toast({
+      title: 'Reset Colouring Book',
+      description: "Deleting saved content",
+      status: 'warning',
+      duration: 4000,
+      isClosable: true,
+      position: 'top'
+    })
+
+    );
     console.log('You cleared the colouring book')
   }
 
@@ -97,18 +110,31 @@ function DrawingBoard() {
     try {
       await saveColours({
         variables: { savedColours: fillColours },
-      });
+      }).then(toast({
+        title: 'Colouring Book',
+        description: "Save Complete",
+        status: 'success',
+        duration: 4000,
+        isClosable: true,
+        position: 'top'
+      }));
     } catch (err) {
       console.error(err);
     }
   };
+  
+
+ 
+ 
+
+
 
   if (loading) {
     return <h2>LOADING...</h2>;
   }
 
   return (
-    <Container>
+    <Container >
       <Heading m={6}>Colouring Pages</Heading>
       <Container
         borderRadius="lg"
@@ -117,13 +143,13 @@ function DrawingBoard() {
         centerContent
         p={5}
       >
-        <Stack spacing={2} direction='row' align='center' m={2}>
+        <Stack spacing={3} direction='row' align='center' m={2}>
         <Button ref={btnRef} fontSize={10} onClick={onOpen} color={text} borderRadius="lg">
           How it works
         </Button>
         {Auth.loggedIn() ? (
         <>
-          <Button fontSize={10} color={text} m={3} onClick={() => handleSaveColourBook(fillColours)}>
+          <Button fontSize={10} color={text} m={3} onClick={() => {handleSaveColourBook(fillColours)}} >
             Save Your Work
           </Button>
           <Button fontSize={10} onClick={handleDeleteColours}>
@@ -134,7 +160,7 @@ function DrawingBoard() {
         <>
           <form method="get" action="/signup">
             <Button m={4} type="submit" fontSize={10}>
-              Login or Sign up to save your work!
+              Login or Sign up to save
             </Button>
           </form>
         </>
@@ -145,7 +171,7 @@ function DrawingBoard() {
           placement="right"
           onClose={onClose}
           finalFocusRef={btnRef}
-          size={"md"}
+          size={"sm"}
         >
           <DrawerOverlay />
           <DrawerContent>
@@ -159,7 +185,7 @@ function DrawingBoard() {
                 <Divider orientation="vertical" />
                   <Text>Users can make an account to save their colouring progress in fillable areas</Text>
                 <Divider orientation="vertical" />
-                <Container borderRadius="md" borderWidth='10px' borderColor='gray.200'>
+                <Container borderRadius="md" borderWidth='10px' borderColor={favColour}>
                   <Text fontSize='32px'> Let's Paint</Text>
                   <OrderedList>
                     <ListItem>Click on Sign up / Login </ListItem>
@@ -172,21 +198,25 @@ function DrawingBoard() {
               </VStack>
             </DrawerBody>
 
-            <DrawerFooter borderTopWidth="2px">
-              <Grid templateColumns='repeat(3, 1fr)' gap={6}>
-                <Center w={100} h='10' bg={currentColour} fontWeight="bold" centerContent>
+            <DrawerFooter borderTopWidth="5px">
+              <Grid templateColumns='repeat(3, 1fr)' gap={3}>
+                <Center w="6rem" h='10' bg={currentColour} fontWeight="bold" >
                   <span role="img" aria-label="paint palette emoji">🎨 </span>
                   Made By: 
                 </Center>
-                <Center w={100} h='10' bg={currentColour} fontWeight="bold" centerContent>
+                <Center w="7rem" h='10' bg={currentColour} fontWeight="bold" p={1} >
                   <Link href='https://github.com/jhugray' isExternal>  
-                  Jess
+                   Jess
                   </Link>
+                  <Spacer />
+                  <Img src={'https://badgen.net/badge/icon/github/'+favColour+'?icon=github&label'}/>
                 </Center>
-                <Center w={100} h='10' bg={currentColour} fontWeight="bold" centerContent>
+                <Center w="8rem" h='10' bg={currentColour} fontWeight="bold" p={1} >
                   <Link href='https://github.com/azuryte5' isExternal>
-                  Andrew
-                  </Link> 
+                   Andrew
+                  </Link>
+                  <Spacer />
+                  <Img src={'https://badgen.net/badge/icon/github/'+favColour+'?icon=github&label'}/> 
                 </Center>
               </Grid>
             </DrawerFooter>
@@ -238,7 +268,7 @@ function DrawingBoard() {
             "#C68642",
             "#F1C27D",
             "#FFDBAC",
-            "#FFFFFF",
+            "#F5F5F5",
             "#B80000",
             "#DB3E00",
             "#FCCB00",
@@ -265,26 +295,11 @@ function DrawingBoard() {
             "#9c27b0",
             "#bf4340",
             "#f8bbd0",
+            "#C0C0C0"
           ]}
           // triangle="hide"
         />
       </Container>
-
-      {/* {Auth.loggedIn() ? (
-        <>
-          <Button m={3} onClick={() => handleSaveColourBook(fillColours)}>
-            Save Your Work
-          </Button>
-        </>
-      ) : (
-        <>
-          <form method="get" action="/signup">
-            <Button m={4} type="submit">
-              Login or Signup to save your work!
-            </Button>
-          </form>
-        </>
-      )} */}
     </Container>
   );
 }
