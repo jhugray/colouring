@@ -3,7 +3,7 @@ import React from 'react';
 class StarTrio extends React.Component {
     render () {
         return (
-          <svg width="380px" xmlns="http://www.w3.org/2000/svg" height="380px" viewBox="0 0 3370.82 2384.24">
+          <svg width="20rem" xmlns="http://www.w3.org/2000/svg" height="20rem" viewBox="0 0 3370.82 2384.24">
             <g id="Layer 1">
         <rect 
          onClick={() => this.props.onFill(30) }

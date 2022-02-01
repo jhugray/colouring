@@ -36,7 +36,7 @@ import House from "../components/House";
 import Child from "../components/Child";
 
 import { useMutation } from "@apollo/client";
-import { SAVE_COLOURS } from "../utils/mutations";
+import { SAVE_COLOURS, DELETE_COLOURS } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { GithubPicker } from "react-color";
 import { GET_ME } from "../utils/queries";
@@ -65,6 +65,8 @@ function DrawingBoard() {
   }, [savedColours]);
 
   const [saveColours] = useMutation(SAVE_COLOURS);
+
+  const [deleteColours] = useMutation(DELETE_COLOURS)
   // How to change Colour
   const onFillColour = (i) => {
     let newFillColours = fillColours.slice(0);
@@ -73,6 +75,12 @@ function DrawingBoard() {
     setFillColours(newFillColours);
     // console.log(newFillColours);
   };
+
+  const handleDeleteColours = async (event) => {
+    event.preventDefault();
+    await deleteColours();
+    console.log('You cleared the colouring book')
+  }
 
   const handleSaveColourBook = async (i) => {
     // get token
@@ -109,20 +117,23 @@ function DrawingBoard() {
         centerContent
         p={5}
       >
-        <Stack spacing={18} direction='row' align='center' m={2}>
-        <Button ref={btnRef} onClick={onOpen} color={text} borderRadius="lg">
+        <Stack spacing={2} direction='row' align='center' m={2}>
+        <Button ref={btnRef} fontSize={10} onClick={onOpen} color={text} borderRadius="lg">
           How it works
         </Button>
         {Auth.loggedIn() ? (
         <>
-          <Button color={text} m={3} onClick={() => handleSaveColourBook(fillColours)}>
+          <Button fontSize={10} color={text} m={3} onClick={() => handleSaveColourBook(fillColours)}>
             Save Your Work
           </Button>
-        </>
+          <Button fontSize={10} onClick={handleDeleteColours}>
+            Clear Colouring book
+          </Button>
+          </>
       ) : (
         <>
           <form method="get" action="/signup">
-            <Button m={4} type="submit">
+            <Button m={4} type="submit" fontSize={10}>
               Login or Sign up to save your work!
             </Button>
           </form>
@@ -184,17 +195,17 @@ function DrawingBoard() {
 
         <Box>
           <Tabs
-            isLazy
             isFitted
-            size="lg"
+            isLazy
+            size="sm"
             defaultIndex={0}
             variant="soft-rounded"
           >
-            <TabList bg="white" borderRadius="lg" size="sm" p={1} >
-              <Tab>Child</Tab>
-              <Tab>HelloWorld</Tab>
-              <Tab>House</Tab>
-              <Tab>StarTrio</Tab>
+            <TabList bg="white" borderRadius="lg" size="sm" p={1} spacing={1}>
+              <Tab fontSize={12}>Child</Tab>
+              <Tab fontSize={12}> HelloWorld</Tab>
+              <Tab fontSize={12}> House</Tab>
+              <Tab fontSize={12}>StarTrio</Tab>
             </TabList>
 
             <TabPanels>
@@ -220,7 +231,7 @@ function DrawingBoard() {
           onChangeComplete={(colour) => {
             setColour(colour.hex);
           }}
-          width="412px"
+          width="18rem"
           colors={[
             "#8D5524",
             "#E0AC69",
