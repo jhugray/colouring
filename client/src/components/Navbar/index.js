@@ -41,7 +41,7 @@ function Nav() {
   };
 
   const { username: userParam } = useParams();
-  const { loading, data } = useQuery(GET_ME);
+  const { data } = useQuery(GET_ME);
   const userData = data?.me || {};
 
   const { toggleColorMode: toggleMode } = useColorMode();
@@ -63,10 +63,6 @@ function Nav() {
 
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Redirect to="/profile" />;
-  }
-
-  if (loading) {
-    return <div>Loading...</div>;
   }
 
   const MobileNavContent = (
