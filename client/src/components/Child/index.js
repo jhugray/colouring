@@ -6,10 +6,10 @@ class Child extends React.Component {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
-        width="380px"
+        width="20rem"
         xlink="http://www.w3.org/1999/xlink"
         space="preserve"
-        height="380px"
+        height="20rem"
         viewBox="700 0 2200 2400"
       >
         <g id="Layer 1">

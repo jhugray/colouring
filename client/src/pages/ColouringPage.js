@@ -109,8 +109,8 @@ function DrawingBoard() {
         centerContent
         p={5}
       >
-        <Stack spacing={18} direction='row' align='center' m={2}>
-        <Button ref={btnRef} onClick={onOpen} color={text} borderRadius="lg">
+        <Stack spacing='auto' direction='row' align='center' m={2}>
+        <Button ref={btnRef} fontSize={10} onClick={onOpen} color={text} borderRadius="lg">
           How it works
         </Button>
         {Auth.loggedIn() ? (
@@ -122,7 +122,7 @@ function DrawingBoard() {
       ) : (
         <>
           <form method="get" action="/signup">
-            <Button m={4} type="submit">
+            <Button m={4} type="submit" fontSize={10}>
               Login or Sign up to save your work!
             </Button>
           </form>
@@ -184,17 +184,17 @@ function DrawingBoard() {
 
         <Box>
           <Tabs
-            isLazy
             isFitted
-            size="lg"
+            isLazy
+            size="sm"
             defaultIndex={0}
             variant="soft-rounded"
           >
-            <TabList bg="white" borderRadius="lg" size="sm" p={1} >
-              <Tab>Child</Tab>
-              <Tab>HelloWorld</Tab>
-              <Tab>House</Tab>
-              <Tab>StarTrio</Tab>
+            <TabList bg="white" borderRadius="lg" size="sm" p={1} spacing={1}>
+              <Tab fontSize={12}>Child</Tab>
+              <Tab fontSize={12}> HelloWorld</Tab>
+              <Tab fontSize={12}> House</Tab>
+              <Tab fontSize={12}>StarTrio</Tab>
             </TabList>
 
             <TabPanels>
@@ -220,7 +220,7 @@ function DrawingBoard() {
           onChangeComplete={(colour) => {
             setColour(colour.hex);
           }}
-          width="412px"
+          width="18rem"
           colors={[
             "#8D5524",
             "#E0AC69",

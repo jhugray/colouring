@@ -4,10 +4,10 @@ class House extends React.Component {
   render() {
     return (
       <svg
-        width="380px"
+        width="20rem"
         space="preserve"
         xlink="http://www.w3.org/1999/xlink"
-        height="380px"
+        height="20rem"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="500 -200 2500 3000"
       >
