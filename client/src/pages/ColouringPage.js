@@ -24,7 +24,7 @@ import {
   Text, 
   Stack, 
   Grid,
-  useColorModeValue,
+  // useColorModeValue,
   Center,
   Link,
   Img,
@@ -46,21 +46,25 @@ import { GET_ME } from "../utils/queries";
 import { useQuery } from "@apollo/react-hooks";
 
 function DrawingBoard() {
-  //For react-color front test
   const [currentColour, setColour] = useState("#C0C0C0");
-  // console.log(currentColour)
-  // Path's get color filled
-
   const { loading, data } = useQuery(GET_ME);
+  const [saveColours] = useMutation(SAVE_COLOURS);
+  const [deleteColours] = useMutation(DELETE_COLOURS)
+
   // console.log(data)
   const userData = data?.me || [];
   const { savedColours, favColour } = userData;
   console.log(userData)
 
+  // toast functionality
   const toast = createStandaloneToast()
+
+  // drawer functionality 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
-  const text = useColorModeValue("dark", "light");
+
+  // toggle colormode
+  // const text = useColorModeValue("dark", "light");
   const [fillColours, setFillColours] = useState(Array(35).fill("white"));
   // console.log(fillColours)
 
@@ -68,9 +72,7 @@ function DrawingBoard() {
     setFillColours(savedColours ? savedColours : Array(35).fill("white"));
   }, [savedColours]);
 
-  const [saveColours] = useMutation(SAVE_COLOURS);
 
-  const [deleteColours] = useMutation(DELETE_COLOURS)
   // How to change Colour
   const onFillColour = (i) => {
     let newFillColours = fillColours.slice(0);
@@ -90,7 +92,6 @@ function DrawingBoard() {
       isClosable: true,
       position: 'top'
     })
-
     );
     console.log('You cleared the colouring book')
   }
@@ -122,12 +123,6 @@ function DrawingBoard() {
       console.error(err);
     }
   };
-  
-
- 
- 
-
-
 
   if (loading) {
     return <h2>LOADING...</h2>;
@@ -144,22 +139,22 @@ function DrawingBoard() {
         p={5}
       >
         <Stack spacing={3} direction='row' align='center' m={2}>
-        <Button ref={btnRef} fontSize={10} onClick={onOpen} color={text} borderRadius="lg">
+        <Button ref={btnRef} fontSize={10} onClick={onOpen} color={"black"} borderRadius="lg" background={"#b3e5fc"}>
           How it works
         </Button>
         {Auth.loggedIn() ? (
         <>
-          <Button fontSize={10} color={text} m={3} onClick={() => {handleSaveColourBook(fillColours)}} >
+          <Button fontSize={10} color={"black"} m={3} onClick={() => {handleSaveColourBook(fillColours)}} background={"#b3e5fc"}>
             Save Your Work
           </Button>
-          <Button fontSize={10} onClick={handleDeleteColours}>
+          <Button fontSize={10} onClick={handleDeleteColours} background={"#b3e5fc"}>
             Clear Colouring book
           </Button>
           </>
       ) : (
         <>
           <form method="get" action="/signup">
-            <Button m={4} type="submit" fontSize={10}>
+            <Button m={4} type="submit" fontSize={10} background={"#b3e5fc"} color={"black"}>
               Login or Sign up to save
             </Button>
           </form>
@@ -296,9 +291,7 @@ function DrawingBoard() {
             "#bf4340",
             "#f8bbd0",
             "#C0C0C0"
-          ]}
-          // triangle="hide"
-        />
+          ]} />
       </Container>
     </Container>
   );

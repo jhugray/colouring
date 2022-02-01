@@ -4,7 +4,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import {GET_ME } from '../utils/queries';
 import { UPDATE_USER, DELETE_IMAGE } from '../utils/mutations';
 import Auth from '../utils/auth';
-import { Heading, Circle, Center, Grid, GridItem, Container, Stack, VStack, Avatar, Select, InputGroup, Button, Input, FormLabel} from '@chakra-ui/react'
+import { Heading, Circle, Center, Grid, GridItem, Container, Stack, VStack, Avatar, Select, InputGroup, Button, Input, FormLabel, createStandaloneToast} from '@chakra-ui/react'
 
 const Profile = (props) => {
   const [updateUser] = useMutation(UPDATE_USER);
@@ -14,7 +14,8 @@ const Profile = (props) => {
   const userData = data?.me || {};
   console.log(userData);
   const [formState, setFormState] = useState({ favColour: ''}, {image: ''});
-
+  
+  const toast = createStandaloneToast()
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -33,14 +34,30 @@ const Profile = (props) => {
         favColour: formState.favColour,
         image: formState.image
       },
-    });
+    }).then(
+      toast({
+      title: 'Updating Profile',
+      description: "New content added",
+      status: 'info',
+      duration: 4000,
+      isClosable: true,
+      position: 'top'
+    }))
   };
+
 
   const handleDeleteImage = async (event) => {
     event.preventDefault();
-    await deleteImage();
-    console.log('you clicked delete')
-  }
+    await deleteImage().then(
+      toast({
+      title: 'Remove Avatar',
+      description: "Clearing Image",
+      status: 'warning',
+      duration: 4000,
+      isClosable: true,
+      position: 'top'
+    }))
+  };
 
 
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {

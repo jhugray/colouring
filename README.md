@@ -22,11 +22,15 @@ The link to the heroku: [Need to set this up still!]
 
 -----
 ## Usage
-Paint Between the Lines is a react colouring app. Users can sign up for an account to be able to save progress. Upload an avatar image and complete a colouring book of several images.
+Paint Between the Lines is a react colouring app. Users can sign up for an account to be able to save progress. Upload an avatar image and complete a colouring book of several images. Add some colour to your world to help brighten your day.
 
 Image below shows a colored in colouring page
- 
+
 ![colouringBook](https://user-images.githubusercontent.com/85147307/152003893-e56946e1-565f-4609-997b-1956f47ba182.png)
+
+Image below shows the profile page
+
+![profile](https://user-images.githubusercontent.com/85147307/152006336-ae2d263f-a99b-4a13-a5d1-0c28673834bf.png)
 
 -----
 ## Tech Used 
@@ -34,7 +38,7 @@ Image below shows a colored in colouring page
 - Apollo Client / React-Hooks
 - Graph Ql
 - Mongoose
-- Chakra
+- Chakra UI
 - React
 - React Color
 - React Router Dom
@@ -48,6 +52,7 @@ Image below shows a colored in colouring page
 - AS A user 
 - I want fill sections of multiple colouring pages by a colour of my choice
 - I want to be able to create an account and to enable saving colouring pages
+- I want to upload an avatar photo and personalize my experience
 
 
 ----
