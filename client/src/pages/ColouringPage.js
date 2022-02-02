@@ -24,7 +24,6 @@ import {
   Text, 
   Stack, 
   Grid,
-  // useColorModeValue,
   Center,
   Link,
   Img,
@@ -51,10 +50,9 @@ function DrawingBoard() {
   const [saveColours] = useMutation(SAVE_COLOURS);
   const [deleteColours] = useMutation(DELETE_COLOURS)
 
-  // console.log(data)
   const userData = data?.me || [];
   const { savedColours, favColour } = userData;
-  console.log(userData)
+
 
   // toast functionality
   const toast = createStandaloneToast()
@@ -66,7 +64,7 @@ function DrawingBoard() {
   // toggle colormode
   // const text = useColorModeValue("dark", "light");
   const [fillColours, setFillColours] = useState(Array(35).fill("white"));
-  // console.log(fillColours)
+
 
   useEffect(() => {
     setFillColours(savedColours ? savedColours : Array(35).fill("white"));
@@ -76,7 +74,7 @@ function DrawingBoard() {
   // How to change Colour
   const onFillColour = (i) => {
     let newFillColours = fillColours.slice(0);
-    console.log(newFillColours);
+    // console.log(newFillColours);
     newFillColours[i] = currentColour;
     setFillColours(newFillColours);
   };
@@ -93,7 +91,7 @@ function DrawingBoard() {
       position: 'top'
     })
     );
-    console.log('You cleared the colouring book')
+    setFillColours(Array(35).fill("white"))
   }
 
   const handleSaveColourBook = async (i) => {
@@ -147,7 +145,7 @@ function DrawingBoard() {
           <Button fontSize={10} color={"black"} m={3} onClick={() => {handleSaveColourBook(fillColours)}} background={"#b3e5fc"}>
             Save Your Work
           </Button>
-          <Button fontSize={10} onClick={handleDeleteColours} background={"#b3e5fc"}>
+          <Button fontSize={10} color={"black"} onClick={handleDeleteColours} background={"#b3e5fc"}>
             Clear Colouring book
           </Button>
           </>
@@ -262,35 +260,36 @@ function DrawingBoard() {
             "#E0AC69",
             "#C68642",
             "#F1C27D",
-            "#FFDBAC",
-            "#F5F5F5",
             "#B80000",
             "#DB3E00",
-            "#FCCB00",
+            "#FFF600",
             "#008B02",
-            "#006B76",
             "#1273DE",
-            "#004DCF",
             "#5300EB",
             "#EB9694",
-            "#FAD0C3",
+            "#FFDBAC",
+            "#FFFFFF",
             "#3B2219",
             "#d2b179",
+            "#e91e63",
+            "#bf360c",
+            "#FFF44F",
+            "#8bc34a",
+            "#004DCF",
+            "#29021A",
+            "#FAD0C3",
             "#795548",
             "#f3d6b9",
             "#FFECB3",
             "#000000",
-            "#e91e63",
-            "#bf360c",
-            "#fcb900",
-            "#8bc34a",
-            "#4dd0e1",
-            "#b3e5fc",
-            "#2d3986",
-            "#9c27b0",
             "#bf4340",
-            "#f8bbd0",
-            "#C0C0C0"
+            "#FFA500",
+            "#FFFF00",
+            "#006B76",
+            "#b3e5fc",
+            "#9c27b0",
+            "#C0C0C0",
+            
           ]} />
       </Container>
     </Container>

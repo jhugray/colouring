@@ -17,7 +17,7 @@ function Footer() {
   >
     <Stack direction="row" spacing="4" align="center" justify="space-between">
       <Image src={logo}></Image>
-      <Text>© 2022 |Paint| between the lines</Text>
+      <Text>© 2022 | Paint | between the lines</Text>
       <Text>Developed by {' '}  
         <Link href="https://github.com/azuryte5" isExternal>Andrew Lefebvre</Link> 
         {' '} and {' '} 
