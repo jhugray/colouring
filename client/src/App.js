@@ -41,6 +41,7 @@ function App() {
         <Navbar />
         <Switch>         
           <Route exact path="/" component={ColouringPage} />
+          <Route exact path="/colouring" component={ColouringPage} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} /> 
           <Route exact path="/myProfile" component={Profile} /> 

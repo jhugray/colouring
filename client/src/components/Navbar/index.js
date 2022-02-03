@@ -84,11 +84,9 @@ function Nav() {
         onClick={mobileNav.onClose}
       />
       <Container w="full">
-        <form method="get" action="/">
-          <Button variant="ghost" w="full" type="submit">
+          <Link variant="ghost" w="full" type="submit" href={'/colouring'}>
             Colouring Page
-          </Button>
-        </form>
+          </Link>
       </Container>
       
       {Auth.loggedIn() ? (
@@ -160,10 +158,9 @@ function Nav() {
           </Flex>
           <Flex justify="flex-end" align="center" color="gray.400" zIndex={200}>
             <HStack spacing="5" display={{ base: "none", md: "flex" }}>
-              <form method="get" action="/">
-                <Button
-                  type="submit"
-                  bg={bg}
+                <Link
+                  bg={bg} 
+                  href={'/colouring'}
                   color="gray.500"
                   display="inline-flex"
                   alignItems="center"
@@ -172,8 +169,7 @@ function Nav() {
                   _focus={{ boxShadow: "none" }}
                 >
                   Colouring Page
-                </Button>
-              </form>
+                </Link>
               {Auth.loggedIn() ? (
                 <>
                   <form method="get" action="/myprofile">
