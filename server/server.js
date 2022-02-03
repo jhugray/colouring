@@ -28,10 +28,15 @@ app.use(express.json());
 // if we're in production, serve client/build as static assets
 if (process.env.NODE_ENV === 'production') {
   app.use((req, res, next) => {
-    if (req.header('x-forwarded-proto') !== 'https')
+    if (req.url === "/") {
+      res.redirect(`https://${req.header('host')}/colouring`)
+    }
+    else if (req.header('x-forwarded-proto') !== 'https') {
       res.redirect(`https://${req.header('host')}${req.url}`)
-    else
+    }
+    else {
       next()
+    }
   })
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
