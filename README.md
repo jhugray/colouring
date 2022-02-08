@@ -22,7 +22,7 @@ Project III
 ## Links
 GitHub repository: <a href="https://github.com/jhugray/colouring" target="_blank">Colouring Repo</a>
 
-The link to the heroku: <a href="https://paintbetweenthelines.herokuapp.com/" target="_blank">Deployed Application</a>
+The link to the heroku: <a href="https://paintbetweenthelines.herokuapp.com/colouring" target="_blank">Deployed Application</a>
 
 -----
 ## Usage
